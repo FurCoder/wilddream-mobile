@@ -1,0 +1,71 @@
+hairline(t = 0)
+  pointer-events: none
+  position absolute
+  content " "
+  top t
+  left 0
+  -webkit-transform-origin top left
+  transform-origin top left
+
+  width percentage(1)
+  height percentage(1)
+  -webkit-transform scale(1)
+  transform scale(1)
+
+  for $i in 2 3
+    @media (-webkit-min-device-pixel-ratio $i), (min-device-pixel-ratio $i) {
+      width percentage($i)
+      height percentage($i)
+      -webkit-transform scale(1/$i)
+      transform scale(1/$i)
+    }
+
+border-top-one-px(c = #dfdfdd)
+    position relative
+    &:after
+        border-top: 1Px solid c
+        hairline(0)
+
+border-bottom-one-px(c = #dfdfdd)
+    position relative
+    &:after
+        border-bottom: 1Px solid c
+        hairline(0)
+
+border-left-one-px(c = #dfdfdd)
+    position relative
+    &:after
+        border-left: 1Px solid c
+        hairline(0)
+
+border-one-px(c = #dfdfdd)
+    position relative
+    &:after
+        border: 1Px solid c
+        hairline(0)
+
+border-none()
+    border none
+    &:after
+        border none
+
+.with-top-one-px-border
+    border-top-one-px($border-grey)
+
+
+.with-bottom-one-px-border
+    border-bottom-one-px($border-grey)
+
+
+border-one-px-with-radius(c = #dfdfdd, r)
+    position relative
+    &:after
+        box-sizing: border-box
+        border: 1Px solid c
+        border-radius: r
+        hairline(0)
+        for $i in 2 3
+          @media (-webkit-min-device-pixel-ratio $i), (min-device-pixel-ratio $i) {
+            border-radius $i*r
+          }
+
