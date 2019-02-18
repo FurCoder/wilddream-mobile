@@ -5,7 +5,7 @@ const config = {
   mode: 'production',
   entry: path.resolve(__dirname, 'app/App.js'),
   output: {
-    path: path.resolve(__dirname, 'docs/js/'),
+    path: path.resolve(__dirname, 'public/js/'),
     publicPath: '/js/',
     filename: 'bundle.js'
   },
@@ -46,7 +46,7 @@ const config = {
     ]
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'docs'),
+    contentBase: path.resolve(__dirname, 'public'),
     historyApiFallback: true,
     compress: true,
     open: false,
