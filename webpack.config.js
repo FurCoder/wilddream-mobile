@@ -56,6 +56,13 @@ const config = {
       'Access-Control-Allow-Headers': '*',
       'X-Frame-Options': 'ALLOW-FROM *',
     },
+    proxy: {
+      '/Art': {
+          target: 'https://wilddream.net/',
+          secure: false,
+          changeOrigin: true,
+      }
+    }
   },
   resolve: {
     alias: {
