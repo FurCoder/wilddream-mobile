@@ -23,16 +23,15 @@ const ArtComponent = (props) => {
 }
 
 const HomePage = () => {
-  const [loading, setLoading] = useState(false)
   const [ list, setList ] = useState([])
   const [ offset, setOffset ] = useState(0)
   const load = useCallback(() => {
-    setLoading(true)
+    //showLoading()
     let aborted = false
     getArtworkList({ offset, length: PAGE_LENGTH }).then(res => {
+      // hideLoading()
       if (aborted) { return }
       setList(prev => prev.concat(res))
-      setLoading(false)
     })
     return () => { aborted = true }
   }, [offset])

@@ -1,5 +1,6 @@
 import qs from 'qs'
 import { getCookie } from '@util/token'
+import { showLoading, hideLoading } from '@util/loading'
 
 const location = ''
 
@@ -23,6 +24,7 @@ const request = async ({
   method = 'GET',
   raw,
 }) => {
+  showLoading()
   const dataKeyNum = Object.keys(data).length
   const stringifyData = qs.stringify(data)
   const requestURL = location + url + ((dataKeyNum!==0 && method === 'GET') ? `?${stringifyData}` : '')
@@ -46,6 +48,7 @@ const request = async ({
       }
     )
   })
+  hideLoading()
   if (raw) {
     return request
   }

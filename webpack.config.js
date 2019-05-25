@@ -32,14 +32,10 @@ const config = {
       },
       {
         test: /\.css$/,
-        exclude: /node_modules\/(?!(react-wx-images-viewer))/,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
-            options: {
-              sourceMap: process.env.NODE_ENV !== 'production'
-            }
           },
         ]
       }
