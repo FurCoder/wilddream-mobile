@@ -1,0 +1,76 @@
+.art-detail-page
+    display flex
+    flex-flow column nowrap
+    padding-bottom: 10px
+
+    img.art-preview
+        max-height 550px
+        min-height 250px
+        object-fit cover
+        width: 100%
+    .authur-info
+        height 40px
+        padding: 0 15px
+        display flex
+        flex-flow: row nowrap
+        align-items: center
+    .base-avatar
+        height 30px
+        width 30px
+        border-radius: 30px
+        object-fit cover
+    .authur-name
+        padding-left: 5px
+        color: #aaa
+    .art-info-title
+        line-height: 40px
+        font-size: 23px
+        padding-left: 15px
+        color: #fff
+        margin-top: 10px
+    .desc-info
+        line-height: 30px
+        padding: 5px 15px 
+        color: #fff
+
+    .fav-list
+        padding: 5px 0px
+        overflow hidden
+        .fav-title
+            padding: 0 15px
+            line-height: 40px
+            font-size: 20px
+            color: #ffffff
+
+        .fav-user-list  
+            padding: 0 15px
+            overflow-y hidden
+            overflow-x scroll
+            height 40px
+            display flex
+            flex-flow: row nowrap
+            padding-bottom: 2em
+            margin-bottom: -2em
+        .fav-avatar
+            height 40px
+            width: 40px
+            background: #9999ff
+            border-radius: 40px
+            flex-shrink: 0
+            margin-left: -7px;
+            &:first-child
+                margin-left: 0
+    .comment-list
+        padding: 0 15px
+        margin-top: 10px
+        .base-avatar
+            height 25px
+            width: 25px
+        .authur-info
+            padding: 0
+        .comment-time
+            color: #aaa
+            font-size: 12px
+        .comment-msg
+            color: #fff
+            line-height: 30px

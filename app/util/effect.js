@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import throttle from 'lodash/throttle'
 
 const DEFAULT_TRIGGER_DISTANCE = 100
@@ -23,3 +23,30 @@ export const useScrollLoadMoreEffect =
       return () => document.removeEventListener('scroll', handleScroll)
     }, callbackEffectDeps || [])
   }
+
+export const useSimplePromise = ( promise, isHolding = false) => {
+  const [result, setResult] = useState({ isLoading: true })
+  useEffect(() => {
+    if (isHolding) { return }
+    setResult((r) => ({ ...r, isLoading: true, error: undefined }))
+    let aborted = false
+    promise.then(data => {
+      if (aborted) { return }
+      setResult({
+        isLoading: false,
+        data,
+      })
+    }, err => {
+      if (aborted) { return }
+      setResult({
+        isLoading: false,
+        error,
+        errDetail: err
+      })
+    })
+    return () => {
+      aborted = true
+    }
+  }, [promise, isHolding])
+  return result
+}

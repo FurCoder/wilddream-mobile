@@ -46,7 +46,7 @@ const config = {
     historyApiFallback: true,
     compress: true,
     open: false,
-    host: '0.0.0.0',
+    host: 'devapp.wilddream.net',
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
