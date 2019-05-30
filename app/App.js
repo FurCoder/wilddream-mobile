@@ -6,6 +6,7 @@ import moment from 'moment'
 import HomePage from '@page/HomePage'
 import LoginPage from '@page/LoginPage'
 import ArtDetail from '@page/ArtDetailPage'
+import UserPage from '@page/UserPage'
 
 import 'antd-mobile/dist/antd-mobile.css'
 import '@style/index.styl'
@@ -18,6 +19,7 @@ render(
       <Route exact path="/" component={HomePage} />
       <Route exact path="/login" component={LoginPage} />
       <Route path="/art-detail/:userid/:artworkid" component={ArtDetail} />
+      <Route path="/user/:userid" component={UserPage} />
     </div>
   </Router>,
   document.getElementById('root')
