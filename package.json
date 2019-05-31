@@ -73,6 +73,7 @@
     "qs": "^6.6.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
+    "react-live-route": "^3.1.1",
     "react-router-dom": "^4.3.1",
     "react-wx-images-viewer": "^1.0.6",
     "xstream": "^11.10.0"
