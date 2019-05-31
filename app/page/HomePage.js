@@ -1,15 +1,10 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
-import { getArtworkList } from '@util/api'
 import { PullToRefresh, ListView } from 'antd-mobile'
-import { Router, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { getArtworkList } from '@util/api'
+import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
 
 const PAGE_LENGTH = 20
-
-const getArtWrokPreviewUrl = (userid, artworkid) =>
-  `https://www.wilddream.net/Public/uploads/artwork/${userid}/preview/${artworkid}.jpg`
-
-const getUserAvatar = (userid) => 
-  `https://www.wilddream.net/Public/uploads/avatar/${userid}/avatar_small.jpg`
 
 const ArtComponent = (props) => {
   const { userid, username, artworkid, title, favcount } = props.art
