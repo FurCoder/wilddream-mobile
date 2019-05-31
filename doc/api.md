@@ -119,6 +119,38 @@ http://www.wilddream.net/Art/remote/getArtworkList/dateline/1400000000/datelinem
   - `artworks` 作品列表
   - `folders` 作品文件夹列表
 
+## 用户收藏列表
+
+- URL /Art/Userpage/fav/userpagename/{userpagename}/ajax/1
+- `{userpagename}` 替换为用户的用户页域名后缀
+- 返回json关联数组
+  - `artworks` 收藏作品列表
+  - `journals` 收藏文章列表
+
+## 关注用户
+
+### 关注用户
+
+- URL /Art/Userpage/addwatch/userid/{userid}
+- 无额外参数，`{userid}` 替换为用户ID
+- 返回1为成功，0为失败
+
+### 取消关注用户
+
+- URL /Art/Userpage/deletewatch/userid/{artworkid}
+- 无额外参数，`{userid}` 替换为用户ID
+- 返回1为成功，0为失败
+
+## 给用户留言
+
+- URL /Art/Userpage/addshout/userid/{userid}/ajax/1
+- `{userid}` 替换为用户ID
+- Method POST
+  - `content` 评论内容
+- 返回json关联数组
+  - 成功：{'success': true}
+  - 失败：{'success': false, 'errorInfo': 错误信息}
+
 # 图片
 
 ## 作品图片
