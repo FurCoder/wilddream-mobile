@@ -20,6 +20,7 @@ const ArtDetail = (props) => {
                     {data.artwork.description}
                 </div>
                 <UserLink
+                    padding
                     userid={userid}
                     username={data.author.username}
                     userpagename={data.author.userpagename}

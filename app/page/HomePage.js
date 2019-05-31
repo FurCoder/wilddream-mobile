@@ -1,23 +1,29 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { PullToRefresh, ListView } from 'antd-mobile'
 import { Link } from 'react-router-dom'
+import UserLink from '@comp/UserLink'
 import { getArtworkList } from '@util/api'
 import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
 
 const PAGE_LENGTH = 20
 
 const ArtComponent = (props) => {
-  const { userid, username, artworkid, title, favcount } = props.art
-  return <Link className='art-block' to={`/art-detail/${userid}/${artworkid}`}>
-    <img className='art-preview' src={getArtWrokPreviewUrl(userid, artworkid)} />
+  const { history } = props
+  const { userid, username, artworkid, userpagename, title, favcount } = props.art
+  const gotoArt = () => history.push(`/art-detail/${userid}/${artworkid}`)
+  return <div className='art-block'>
+    <img className='art-preview' src={getArtWrokPreviewUrl(userid, artworkid, 'thumb')} onClick={gotoArt} />
     <div className="art-info">
-      <img className="base-avatar" src={getUserAvatar(userid)} />
-      <span className="authur-name">{username}</span>
+      <UserLink
+          userid={userid}
+          username={username}
+          userpagename={userpagename}
+      />
       <div className="art-info-title">{title}
         <span className="favcount">{(+favcount) !== 0 && ` ${favcount}人收藏`}</span>
       </div>
     </div>
-  </Link>
+  </div>
 }
 
 const VoidList = new ListView.DataSource({
@@ -42,7 +48,7 @@ const HomePage = (props) => {
   return <div className='home-page'>
     <ListView
       dataSource={listDataSource}
-      renderRow={rowData => <ArtComponent art={rowData}/>}
+      renderRow={rowData => <ArtComponent art={rowData} history={props.history} />}
       initialListSize={5}
       onEndReachedThreshold={150}
       onEndReached={() => load()}
