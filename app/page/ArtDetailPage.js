@@ -22,6 +22,7 @@ const ArtDetail = (props) => {
                 <UserLink
                     userid={userid}
                     username={data.author.username}
+                    userpagename={data.author.userpagename}
                 />
                 <UserScrollList
                     title={`${data.artwork.favcount}只兽收藏了此作品`}

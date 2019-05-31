@@ -13,6 +13,11 @@ export const checkLogin = data => request({
   method: 'POST',
 })
 
+export const getUser = data => request({
+  url: `/Art/userpage/profile/userpagename/${data.userid}/ajax/1`,
+  data,
+})
+
 export const getArtworkList = data => request({
   url: '/Art/remote/getArtworkList',
   data,

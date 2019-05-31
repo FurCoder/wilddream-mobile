@@ -8,7 +8,7 @@ export const CommentItem = (props) => {
     const { comment } = props
     return <div key={comment.commentid} className="comment-item">
         <div className="comment-user-info">
-            <UserLink userid={comment.userid} username={comment.username} />
+            <UserLink userid={comment.userid} username={comment.username} userpagename={comment.userpagename} />
             <div className="comment-time">({moment((+comment.dateline)*1000).format('YYYY-MM-DD hh:mm:ss')})</div>
         </div>  
         <div className="comment-msg">

@@ -20,7 +20,7 @@ render(
       <LiveRoute exact alwaysLive path="/" component={HomePage} />
       <Route exact path="/login" component={LoginPage} />
       <Route path="/art-detail/:userid/:artworkid" component={ArtDetail} />
-      <Route path="/user/:userid" component={UserPage} />
+      <Route path="/user/:userpagename" component={UserPage} />
     </div>
   </Router>,
   document.getElementById('root')
