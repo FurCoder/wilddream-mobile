@@ -10,7 +10,7 @@ const UserScrollList = (props) => {
             {
                 userList.map(user => <Link
                     key={user.userid}
-                    to={`/user/${user.userid}`} className="fav-avatar"
+                    to={`/user/${user.userpagename}`} className="fav-avatar"
                     style={{background: `url(${getUserAvatar(user.userid)}) no-repeat center center / cover`}}
                 />)
             }
