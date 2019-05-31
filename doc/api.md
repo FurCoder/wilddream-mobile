@@ -4,7 +4,7 @@
 
 ## 登录
 
-- URL /Art/login/submit/ajax/1
+- URL /Art/login/submit/ajax/1
 - Method  POST
 - params
   - `username` 用户名
@@ -32,11 +32,18 @@
   - 已登录：{'login': true, 'user': 登录用户信息}
   - 未登录：{'login': false}
 
+## 登出
+
+- URL /Art/login/logout/ajax/1
+- 返回json关联数组
+  - 成功：{'success': true}
+  - 失败：{'success': false, 'errorinfo': 错误信息}
+
 # 作品
 
 ## 作品列表
 
-- URL /Art/remote/getArtworkList
+- URL /Art/remote/getArtworkList
 - Method GET (以“/参数名/参数值”的方式附加在api地址后)
 - params
   - `dateline` 时间戳（整数），可选（默认为0），为0时不起作用
@@ -85,15 +92,42 @@ http://www.wilddream.net/Art/remote/getArtworkList/dateline/1400000000/datelinem
   - 成功：{'success': true}
   - 失败：{'success': false, 'errorInfo': 错误信息}
 
+# 用户
+
+## 用户基本信息
+
+- URL /Art/userpage/profile/userpagename/{userpagename}/ajax/1
+- `{userpagename}` 替换为用户的用户页域名后缀
+- 返回json关联数组
+  - `user` 用户信息（id、用户名、用户页域名后缀、简介）
+  - `profile` 用户详细资料（所在地、性别、生日等，可能为空）
+  - `watch` 当前登录用户是否关注了该用户（未关注的话该项为`null`，已关注的话，`dateline`为关注时间）
+  - `watchlist` 该用户关注的用户列表
+  - `watchedlist` 关注该用户的用户（粉丝）列表
+  - `viewlogs` 最近访问该用户用户页的用户列表
+  - `shoutlist` 该用户的留言列表
+  - `artworkcount` 作品数
+  - `favcount` 被收藏数
+  - `pageviews` 总浏览量
+
+## 用户作品列表
+
+- URL /Art/userpage/gallery/userpagename/{userpagename}/ajax/1
+- `{userpagename}` 替换为用户的用户页域名后缀
+- 可后接`/folderid/{folderid}`返回某一作品文件夹下的作品列表
+- 返回json关联数组
+  - `artworks` 作品列表
+  - `folders` 作品文件夹列表
+
 # 图片
 
 ## 作品图片
 
-- URL /Public/uploads/artwork/{userid}/{preview或thumb}/{artworkid}.jpg
+- URL /Public/uploads/artwork/{userid}/{preview或thumb}/{artworkid}.jpg
   - `thumb` 缩略图（width <= 200, height <= 1000）
   - `preview` 大图（width <= 1024, height <= 1024，用于作品页浏览）
 
-## 用户头像
+## 用户头像
 
 - URL /Public/uploads/avatar/{userid}/avatar_{small或large}.jpg
   - `small` 小缩略图（width <= 50, height <= 50）
