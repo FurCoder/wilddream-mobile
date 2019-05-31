@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { getArtworkList } from '@util/api'
-import { useScrollLoadMoreEffect } from '@util/effect'
+import { PullToRefresh, ListView } from 'antd-mobile'
 import { Router, Route, Link } from 'react-router-dom'
 
 const PAGE_LENGTH = 20
@@ -25,23 +25,47 @@ const ArtComponent = (props) => {
   </Link>
 }
 
+const VoidList = new ListView.DataSource({
+  rowHasChanged: (row1, row2) => row1 !== row2,
+})
+
 const HomePage = (props) => {
   const [ list, setList ] = useState([])
   const [ offset, setOffset ] = useState(0)
   const load = useCallback(() => {
-    //showLoading()
     let aborted = false
     getArtworkList({ offset, length: PAGE_LENGTH }).then(res => {
-      // hideLoading()
       if (aborted) { return }
       setList(prev => prev.concat(res))
     })
     return () => { aborted = true }
   }, [offset])
-  useScrollLoadMoreEffect(() => {setOffset(prev => prev + PAGE_LENGTH)})
-  useEffect(load, [load])
+  const onRefresh = () => {
+    setList([])
+    setOffset(0)
+    load()
+  }
+  useEffect(load, [])
   return <div className='home-page'>
-    { list.map(art => <ArtComponent key={art.artworkid} art={art}/> )}
+    <ListView
+      dataSource={VoidList.cloneWithRows(list)}
+      renderRow={rowData => <ArtComponent art={rowData}/>}
+      initialListSize={5}
+      onEndReachedThreshold={150}
+      onEndReached={() => {
+        setOffset(prev => prev + PAGE_LENGTH)
+        load()
+      }}
+      pullToRefresh={<PullToRefresh
+        refreshing={false}
+        onRefresh={onRefresh}
+      />}
+      style={{
+        height: '100%',
+        overflow: 'auto',
+        background: '#2b3e50',
+      }}
+    />
   </div>
 }
 
