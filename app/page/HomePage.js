@@ -21,7 +21,7 @@ const ArtComponent = (props) => {
 }
 
 const VoidList = new ListView.DataSource({
-  rowHasChanged: (row1, row2) => row1 !== row2,
+  rowHasChanged: (row1, row2) => row1.artworkid !== row2.artworkid,
 })
 
 const HomePage = (props) => {
