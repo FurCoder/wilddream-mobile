@@ -33,19 +33,16 @@ const HomePage = (props) => {
   const [ list, setList ] = useState([])
   const listDataSource = useMemo(() => VoidList.cloneWithRows(list), [list])
   const [ offset, setOffset ] = useState(0)
-  const load = useCallback(() => {
+  const load = useCallback((refresh = false) => {
     let aborted = false
-    getArtworkList({ offset, length: PAGE_LENGTH }).then(res => {
+    getArtworkList({ offset: refresh ? 0 : offset, length: PAGE_LENGTH }).then(res => {
       if (aborted) { return }
-      setList(prev => [...prev, ...res])
+      setList(prev => refresh ? res : [...prev, ...res])
+      setOffset(refresh ? 0 : offset + PAGE_LENGTH)
     })
     return () => { aborted = true }
   }, [offset])
-  const onRefresh = () => {
-    setList([])
-    setOffset(0)
-    load()
-  }
+  const onRefresh = () => load(ture)
   useEffect(load, [])
   return <div className='home-page'>
     <ListView
@@ -53,10 +50,7 @@ const HomePage = (props) => {
       renderRow={rowData => <ArtComponent art={rowData}/>}
       initialListSize={5}
       onEndReachedThreshold={150}
-      onEndReached={() => {
-        setOffset(prev => prev + PAGE_LENGTH)
-        load()
-      }}
+      onEndReached={() => load()}
       pullToRefresh={<PullToRefresh
         refreshing={false}
         onRefresh={onRefresh}
