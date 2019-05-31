@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { getArtworkList } from '@util/api'
 import { PullToRefresh, ListView } from 'antd-mobile'
 import { Router, Route, Link } from 'react-router-dom'
@@ -31,12 +31,13 @@ const VoidList = new ListView.DataSource({
 
 const HomePage = (props) => {
   const [ list, setList ] = useState([])
+  const listDataSource = useMemo(() => VoidList.cloneWithRows(list), [list])
   const [ offset, setOffset ] = useState(0)
   const load = useCallback(() => {
     let aborted = false
     getArtworkList({ offset, length: PAGE_LENGTH }).then(res => {
       if (aborted) { return }
-      setList(prev => prev.concat(res))
+      setList(prev => [...prev, ...res])
     })
     return () => { aborted = true }
   }, [offset])
@@ -48,7 +49,7 @@ const HomePage = (props) => {
   useEffect(load, [])
   return <div className='home-page'>
     <ListView
-      dataSource={VoidList.cloneWithRows(list)}
+      dataSource={listDataSource}
       renderRow={rowData => <ArtComponent art={rowData}/>}
       initialListSize={5}
       onEndReachedThreshold={150}
