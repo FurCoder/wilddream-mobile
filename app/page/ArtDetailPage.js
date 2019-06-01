@@ -31,7 +31,6 @@ const ArtDetail = (props) => {
                 <CommentList
                     commentList={data.commentlist}
                 />
-                <div className="t1" onClick={() => refresh()}>刷新</div>
             </>
         }
     </div>

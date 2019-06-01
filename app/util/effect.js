@@ -55,7 +55,8 @@ export const useSimplePromise = ( promise, isHolding = false) => {
 }
 
 export const useSimpleFetch = ( promiseGen, params) => {
-  const promise = useMemo(() => promiseGen(params), [promiseGen])
+  const paramsEffect = Object.entries(params).map(item => item[1]).concat(promiseGen)
+  const promise = useMemo(() => promiseGen(params), paramsEffect)
   const { isLoading, data, setResult } = useSimplePromise(promise)
   const refresh = (newParams) => {
     setResult(prev => ({...prev, isLoading: true}))

@@ -9,7 +9,7 @@ import TabSwitcher from '@comp/TabSwitcher'
 import { Link } from 'react-router-dom'
 
 const Profile = (props) => {
-    const renderText = (str, render = str => str) => (str || '') === '' ? <span className='is-void'>暂无</span> : render(str)
+    const renderText = (str, render = str => str) => ((str || '') === '' || str === '0') ? <span className='is-void'>暂无</span> : render(str)
     const genderMap = ['雄性', '雌性', '其他']
     const renderGender = str => genderMap[str - 1]
     const {
@@ -80,7 +80,7 @@ const Profile = (props) => {
         </div>
         <div className="profile-item">
             <div className="profile-type">Twitter</div>
-            <div className="profile-state">{renderText(twitter, str => `@${weibo}`)}</div>
+            <div className="profile-state">{renderText(twitter, str => `@${twitter}`)}</div>
         </div> 
         <div className="profile-item">
             <div className="profile-type">百度贴吧</div>
@@ -160,7 +160,6 @@ const UserPage = (props) => {
                 <div className="intro">{data.user.introduction}</div>
             </div>
         </div>
-        <div className="t1" onClick={() => refresh()}>刷新</div>
         <TabSwitcher
             tabList={[
                 {label: '朋友们', content: <>
