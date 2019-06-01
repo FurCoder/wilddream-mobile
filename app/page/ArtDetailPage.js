@@ -3,14 +3,13 @@ import UserScrollList from '@comp/UserScrollList'
 import { CommentList } from '@comp/Comment'
 import UserLink from '@comp/UserLink'
 import { getArtWorkDetail } from '@util/api'
-import { useSimplePromise } from '@util/effect'
+import { useSimpleFetch } from '@util/effect'
 import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
 import { Link } from 'react-router-dom'
 
 const ArtDetail = (props) => {
     const { userid, artworkid } = props.match.params
-    const promise = useMemo(() => getArtWorkDetail({artworkid}), [artworkid])
-    const { isLoading, data } = useSimplePromise(promise)
+    const [ isLoading, data, refresh ] = useSimpleFetch(getArtWorkDetail, {artworkid})
     return <div className='art-detail-page'>
         <img className='art-preview' src={getArtWrokPreviewUrl(userid, artworkid)} />
         {
@@ -32,6 +31,7 @@ const ArtDetail = (props) => {
                 <CommentList
                     commentList={data.commentlist}
                 />
+                <div className="t1" onClick={() => refresh()}>刷新</div>
             </>
         }
     </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { getUser } from '@util/api'
 import { getUserAvatar } from '@util/imgUri'
-import { useSimplePromise } from '@util/effect'
+import { useSimpleFetch } from '@util/effect'
 import UserScrollList from '@comp/UserScrollList'
 import { CommentList } from '@comp/Comment'
 import BlockState from '@comp/BlockState'
@@ -150,8 +150,7 @@ const Profile = (props) => {
 
 const UserPage = (props) => {
     const { userpagename } = props.match.params
-    const promise = useMemo(() => getUser({userpagename}), [userpagename])
-    const { isLoading, data } = useSimplePromise(promise)
+    const [ isLoading, data, refresh ] = useSimpleFetch(getUser, {userpagename})
     if (isLoading) { return null }
     return <div className='user-page'>
         <div className="user-avator">
@@ -161,14 +160,17 @@ const UserPage = (props) => {
                 <div className="intro">{data.user.introduction}</div>
             </div>
         </div>
+        <div className="t1" onClick={() => refresh()}>刷新</div>
         <TabSwitcher
             tabList={[
                 {label: '朋友们', content: <>
                     <UserScrollList
+                        noScroll
                         title={`他关注了`}
                         userList={data.watchlist}
                     />
                     <UserScrollList
+                        noScroll
                         title={`关注他的`}
                         userList={data.watchedlist}
                     />

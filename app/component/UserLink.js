@@ -4,7 +4,7 @@ import { getUserAvatar } from '@util/imgUri'
 
 const UserList = (props) => {
     const { userid, userpagename, username, padding = false, little = false, style = {} } = props
-    return <Link className="user-link" style={{
+    return <Link className="user-link" push style={{
         ...(padding ? {padding: '0 15px'} : {}),
         ...(little ? {height: 25} : {}),
         ...style,

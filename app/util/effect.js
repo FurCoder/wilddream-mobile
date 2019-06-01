@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import throttle from 'lodash/throttle'
 
 const DEFAULT_TRIGGER_DISTANCE = 100
@@ -48,5 +48,20 @@ export const useSimplePromise = ( promise, isHolding = false) => {
       aborted = true
     }
   }, [promise, isHolding])
-  return result
+  return {
+    ...result,
+    setResult
+  }
+}
+
+export const useSimpleFetch = ( promiseGen, params) => {
+  const promise = useMemo(() => promiseGen(params), [promiseGen])
+  const { isLoading, data, setResult } = useSimplePromise(promise)
+  const refresh = (newParams) => {
+    setResult(prev => ({...prev, isLoading: true}))
+    promiseGen(newParams || params).then(data => {
+      setResult(prev => ({...prev, isLoading: false, data}))
+    })
+  }
+  return [ isLoading, data, refresh]
 }
