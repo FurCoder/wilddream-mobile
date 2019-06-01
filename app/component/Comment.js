@@ -48,7 +48,7 @@ export const CommentList = (props) => {
     const { commentList } = props
     return <div className="comment-list">
         {
-            commentList.map(comment => <CommentItem comment={comment} key={comment.commentid} />)
+            commentList.map(comment => <CommentItem comment={comment} key={comment.dateline} />)
         }
     </div>
 }
