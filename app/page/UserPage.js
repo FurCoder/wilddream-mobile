@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { getUser } from '@util/api'
 import { getUserAvatar } from '@util/imgUri'
 import { useSimpleFetch } from '@util/effect'
+import { addShout } from '@util/api'
 import UserScrollList from '@comp/UserScrollList'
 import { CommentList } from '@comp/Comment'
 import BlockState from '@comp/BlockState'
@@ -184,7 +185,10 @@ const UserPage = (props) => {
                 </>},
         {label: '留言', content: <>
                     <CommentList
+                      refresh={refresh}
                       commentList={data.shoutlist}
+                      submitParams={{userid: data.user.userid}}
+                      submitFunc={addShout}
                     />
                 </>},
         {label: '详细资料', content: <>

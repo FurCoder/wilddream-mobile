@@ -3,7 +3,7 @@ import classNames from 'classnames'
 
 const TabSwitcher = (props) => {
   const [activeIndex, setIndex] = useState(0)
-  useEffect(() => { setIndex(0) }, [props.tabList])
+  // useEffect(() => { setIndex(0) }, [props.tabList])
   return <div className="tab-switcher">
     <div className="tab-button-group">
       {
@@ -18,9 +18,17 @@ const TabSwitcher = (props) => {
         </div>)
       }
     </div>
-    <div className="tab-container">
-      { props.tabList[activeIndex].content }
-    </div>
+    {
+        props.tabList.map((tab, i) => <div
+          key={i}
+          className="tab-container"
+          style={{
+              display: i === activeIndex ? 'block' : 'none'
+          }}
+        >
+          {tab.content}
+        </div>)
+    }
   </div>
 }
 

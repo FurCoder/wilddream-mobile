@@ -53,7 +53,23 @@ export const deleteWatch = data => request({
 })
 
 export const getActive = data => request({
-  url: `Art/index/activity/ajax/1/page/${data.page}`,
+  url: `/Art/index/activity/ajax/1/page/${data.page}`,
   data: {},
   method: 'GET',
+})
+
+export const addCommentToArtwork = data => request({
+  url: `/Art/artwork/addcomment/artworkid/${data.artworkid}/ajax/1`,
+  data: {
+    content: data.content
+  },
+  method: 'POST',
+})
+
+export const addShout = data => request({
+  url: `/Art/Userpage/addshout/userid/${data.userid}/ajax/1`,
+  data: {
+    content: data.content
+  },
+  method: 'POST',
 })

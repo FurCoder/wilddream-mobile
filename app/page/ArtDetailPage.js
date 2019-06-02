@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import UserScrollList from '@comp/UserScrollList'
 import { CommentList } from '@comp/Comment'
 import UserLink from '@comp/UserLink'
-import { getArtWorkDetail } from '@util/api'
+import { getArtWorkDetail, addCommentToArtwork } from '@util/api'
 import { useSimpleFetch } from '@util/effect'
 import FavButton from '@comp/FavButton'
 import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
@@ -37,6 +37,9 @@ const ArtDetail = (props) => {
                 />
                 <CommentList
                   commentList={data.commentlist}
+                  refresh={refresh}
+                  submitParams={{artworkid}}
+                  submitFunc={addCommentToArtwork}
                 />
             </>
     }
