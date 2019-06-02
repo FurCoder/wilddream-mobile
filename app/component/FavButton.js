@@ -13,16 +13,6 @@ const FavButton = (props) => {
   const handleClick = async (e) => {
     e.preventDefault()
     if (!checkAndGo()) { return null }
-    // const { login } = await checkLogin()
-    // if (login !== true) {
-    //   Modal.alert('收藏未成功', '需要先登录～', [
-    //     { text: '先不要登', onPress: () => console.log('cancel') },
-    //     { text: '确定', onPress: () => {
-    //       router.hsistory.push('/login')
-    //     }},
-    //   ])
-    //   return null
-    // }
     const result = await (fav ? deleteFav : addFav)({artworkid})
     if (result === 1) {
       setFav(prev => !prev)

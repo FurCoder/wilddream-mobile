@@ -20,7 +20,6 @@ const parseComment = (commentStr) => {
         const pair = item.split('=')
         return [pair[0], pair[1].slice(1, -1)]
       })
-
     const elementParam = Object.fromEntries(_elementParam)
     // console.log(elementParam, beforeStr, afterStr)
     const elementLabel = coreData[1]
@@ -34,13 +33,20 @@ const parseComment = (commentStr) => {
 }
 
 export const CommentItem = (props) => {
-  const { comment } = props
+  const { comment, enableDelButton, checkItemCanbeDel, delFunc, refresh } = props
+  const del = async () => {
+    await delFunc(comment)
+    await refresh()
+  }
   return <div key={comment.commentid} className="comment-item">
     <div className="comment-user-info">
       <UserLink userid={comment.shouterid || comment.userid} username={comment.username} userpagename={comment.userpagename} />
       <div className="comment-time">({moment((+comment.dateline)*1000).format('YYYY-MM-DD hh:mm:ss')})</div>
-      <div className="comment-button-group" onClick={props.reply}>
-        <div className="comment-button">回复</div>
+      <div className="comment-button-group">
+        {
+          enableDelButton && checkItemCanbeDel(comment) && <div className="comment-button" onClick={del}>删除</div>
+        }
+        <div className="comment-button" onClick={props.reply}>回复</div>
       </div>
     </div>
     <div className="comment-msg">
@@ -56,6 +62,9 @@ export const CommentList = (props) => {
     submitFunc,
     submitButtonLabel = '发表',
     refresh,
+    enableDelButton = false,
+    checkItemCanbeDel = () => false,
+    delFunc,
   } = props
   const [ tmp, setTmp ] = useState('')
   const checkTmp = str => {
@@ -81,10 +90,18 @@ export const CommentList = (props) => {
   }
   const _reply = username => () => {
     setTmp(prev => `@${username} ：${prev}`)
-  } 
+  }
   return <div className="comment-list">
     {
-      commentList.map(comment => <CommentItem reply={_reply(comment.username)} comment={comment} key={comment.dateline} />)
+      commentList.map(comment => <CommentItem
+        enableDelButton={enableDelButton}
+        checkItemCanbeDel={checkItemCanbeDel}
+        delFunc={delFunc}
+        refresh={refresh}
+        reply={_reply(comment.username)}
+        comment={comment}
+        key={comment.dateline}
+      />)
     }
     <textarea className='input-area' onChange={e => setTmp(e.target.value)} value={tmp} />
     <button className="submit-button" onClick={submit}>{submitButtonLabel}</button>

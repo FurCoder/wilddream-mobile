@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react'
-import { getUser } from '@util/api'
+import React, { useState, useEffect, useCallback, useMemo, useContext } from 'react'
+import { __RouterContext }  from 'react-router-dom'
+import { getUser, getUserArtwork } from '@util/api'
 import { getUserAvatar } from '@util/imgUri'
 import { useSimpleFetch } from '@util/effect'
 import { addShout } from '@util/api'
@@ -9,6 +10,7 @@ import BlockState from '@comp/BlockState'
 import TabSwitcher from '@comp/TabSwitcher'
 import FocusButton from '@comp/FocusButton'
 import { Link } from 'react-router-dom'
+import ArtBlock from '@comp/ArtBlock'
 
 const Profile = (props) => {
   const renderText = (str, render = str => str) => ((str || '') === '' || str === '0') ? <span className='is-void'>暂无</span> : render(str)
@@ -150,6 +152,18 @@ const Profile = (props) => {
   </div>
 }
 
+const UserGallery = (props) => {
+    const { userpagename } = props
+    const router = useContext(__RouterContext)
+    const [ isLoading, data, refresh ] = useSimpleFetch(getUserArtwork, {userpagename})
+    if (isLoading) { return <div></div> }
+    return <div className='user-gallery'>
+        {
+            data.artworks.map(rowData => <ArtBlock key={rowData.artworkid} haveUserLink={false} art={rowData} history={router.history} />)
+        }
+    </div>
+}
+
 const UserPage = (props) => {
   const { userpagename } = props.match.params
   const [ isLoading, data, refresh ] = useSimpleFetch(getUser, {userpagename})
@@ -167,6 +181,9 @@ const UserPage = (props) => {
     </div>
     <TabSwitcher
       tabList={[
+        {label: '画廊', content: <>
+            <UserGallery userpagename={userpagename} />
+        </>},
         {label: '朋友们', content: <>
                     <UserScrollList
                       noScroll
@@ -197,7 +214,8 @@ const UserPage = (props) => {
                         { label: '作品', state: data.artworkcount },
                         { label: '被收藏', state: data.favcount },
                         { label: '总浏览量', state: data.pageviews },
-                        { label: '粉丝数', state: data.watchlist.length },
+                        { label: '关注数', state: data.watchlist.length },
+                        { label: '粉丝数', state: data.watchedlist.length },
                       ]}
                     />
                     <Profile profile={data.profile} />

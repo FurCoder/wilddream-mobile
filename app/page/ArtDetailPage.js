@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import UserScrollList from '@comp/UserScrollList'
 import { CommentList } from '@comp/Comment'
 import UserLink from '@comp/UserLink'
-import { getArtWorkDetail, addCommentToArtwork, getLocalLoginInfo } from '@util/api'
+import { getArtWorkDetail, addCommentToArtwork, getLocalLoginInfo, deleteComment } from '@util/api'
 import { useSimpleFetch } from '@util/effect'
 import FavButton from '@comp/FavButton'
 import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
@@ -37,6 +37,14 @@ const ArtDetail = (props) => {
                   userList={data.favlist}
                 />
                 <CommentList
+                  enableDelButton
+                  checkItemCanbeDel={(item) => {
+                    if (!getLocalLoginInfo().login) { return false }
+                    if (getLocalLoginInfo().user.userid === userid) { return true }
+                    if (item.userid === getLocalLoginInfo().user.userid) {return true}
+                    return false
+                  }}
+                  delFunc={deleteComment}
                   commentList={data.commentlist}
                   refresh={refresh}
                   submitParams={{artworkid}}

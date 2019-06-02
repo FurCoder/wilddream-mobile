@@ -19,15 +19,15 @@ const TabSwitcher = (props) => {
       }
     </div>
     {
-        props.tabList.map((tab, i) => <div
-          key={i}
-          className="tab-container"
-          style={{
-              display: i === activeIndex ? 'block' : 'none'
-          }}
-        >
-          {tab.content}
-        </div>)
+      props.tabList.map((tab, i) => <div
+        key={i}
+        className="tab-container"
+        style={{
+          display: i === activeIndex ? 'block' : 'none'
+        }}
+      >
+        {tab.content}
+      </div>)
     }
   </div>
 }

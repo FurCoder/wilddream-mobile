@@ -54,7 +54,7 @@ const config = {
     },
     proxy: {
       '/Art': {
-          target: 'https://wilddream.net/',
+          target: 'https://www.wilddream.net/',
           secure: false,
           changeOrigin: true,
       }

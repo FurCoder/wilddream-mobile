@@ -23,7 +23,7 @@ export const checkLogin = async data => {
   return result
 }
 
-export const getLocalLoginInfo = async => {
+export const getLocalLoginInfo = () => {
   const info = window.localStorage.login
   if (!info) {return {}}
   try {
@@ -34,7 +34,12 @@ export const getLocalLoginInfo = async => {
 }
 
 export const getUser = data => request({
-  url: `/Art/userpage/profile/userpagename/${data.userid}/ajax/1`,
+  url: `/Art/userpage/profile/userpagename/${data.userpagename}/ajax/1`,
+  data,
+})
+
+export const getUserArtwork = data => request({
+  url: `/Art/userpage/gallery/userpagename/${data.userpagename}/ajax/1`,
   data,
 })
 
@@ -94,6 +99,7 @@ export const addShout = data => request({
   method: 'POST',
 })
 
-export const deleteComment = data => {
-  
-}
+export const deleteComment = data => request({
+  url: `/Art/artwork/deletecomment/commentid/${data.commentid}/ajax/1`,
+  method: 'GET',
+})
