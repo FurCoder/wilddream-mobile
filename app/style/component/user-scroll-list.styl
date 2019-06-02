@@ -17,9 +17,14 @@
         flex-flow: row nowrap
         padding-bottom: 2em
         margin-bottom: -2em
+        &:after
+            height: 0;
+            width: calc(100%/40px);
+            content: "";
     .fav-avatar
         height 40px
         width: 40px
+        display inline-block
         background: #9999ff
         border-radius: 40px
         flex-shrink: 0
