@@ -175,6 +175,15 @@ http://www.wilddream.net/Art/remote/getArtworkList/dateline/1400000000/datelinem
   - 成功：{'success': true}
   - 失败：{'success': false, 'errorInfo': 错误信息}
 
+## 删除用户留言
+
+- URL /Art/Userpage/deleteshout/shoutid/{shoutid}/ajax/1
+- `{shoutid}` 替换为留言ID
+- 用户可以删除：1. 自己发表的留言 2. 自己用户页下的留言。其他的留言不可删除。
+- 返回json关联数组
+  - 成功：{'success': true}
+  - 失败：{'success': false, 'errorInfo': 失败原因}
+
 # 图片
 
 ## 作品图片
