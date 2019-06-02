@@ -7,11 +7,31 @@ export const login = data => request({
   // raw: true,
 })
 
-export const checkLogin = data => request({
+export const _checkLogin = data => request({
   url: '/Art/remote/isLogin',
   data,
   method: 'POST',
 })
+
+export const checkLogin = async data => {
+  const result = await _checkLogin(data)
+  if (!result.login) {
+    window.localStorage.login = '{}'
+  } else {
+    window.localStorage.login = JSON.stringify(result)
+  }
+  return result
+}
+
+export const getLocalLoginInfo = async => {
+  const info = window.localStorage.login
+  if (!info) {return {}}
+  try {
+    return JSON.parse(info)
+  } catch (e) {
+    return {}
+  }
+}
 
 export const getUser = data => request({
   url: `/Art/userpage/profile/userpagename/${data.userid}/ajax/1`,
@@ -73,3 +93,7 @@ export const addShout = data => request({
   },
   method: 'POST',
 })
+
+export const deleteComment = data => {
+  
+}

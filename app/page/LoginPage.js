@@ -14,10 +14,10 @@ const Login = (props) => {
     }))
   }
   const toLogin = async () => {
-    console.log(formData)
     const res = await login({...formData})
     if (res.success) {
       Toast.success('登录成功，欢迎回来')
+      await checkLogin()
       props.history.goBack()
     } else {
       Toast.success('登录失败，请重试')
