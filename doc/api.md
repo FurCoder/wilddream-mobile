@@ -77,7 +77,8 @@ http://www.wilddream.net/Art/remote/getArtworkList/dateline/1400000000/datelinem
   - `author` 作者信息（`username`, `userpagename`）
   - `commentlist` 评论列表
   - `favlist` 收藏列表
-  - `fav` 当前登录用户是否收藏本作品
+  - `fav` 当前登录用户是否收藏本作品（仅登录时有该键对）
+  - `watch` 当前登录用户是否关注了该作品的作者（仅登录时有该键对）
   - `viewloglist` 如果当前登录用户为该作品作者，则提供该作品的浏览记录（哪些用户在什么时间访问了该作品）
 
 ## 收藏作品
@@ -96,6 +97,8 @@ http://www.wilddream.net/Art/remote/getArtworkList/dateline/1400000000/datelinem
 
 ## 评论作品
 
+### 添加评论
+
 - URL /Art/artwork/addcomment/artworkid/{artworkid}/ajax/1
 - `{artworkid}` 替换为作品ID
 - Method POST
@@ -103,6 +106,15 @@ http://www.wilddream.net/Art/remote/getArtworkList/dateline/1400000000/datelinem
 - 返回json关联数组
   - 成功：{'success': true}
   - 失败：{'success': false, 'errorInfo': 错误信息}
+
+## 删除评论
+
+- URL /Art/artwork/deletecomment/commentid/{commentid}/ajax/1
+- `{commentid}` 替换为评论ID
+- 用户可以删除：1. 自己发表的评论 2. 自己作品底下的评论。其他的评论不可删除。
+- 返回json关联数组
+  - 成功：{'success': true}
+  - 失败：{'success': false}
 
 # 用户
 
