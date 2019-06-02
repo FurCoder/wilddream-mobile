@@ -153,15 +153,15 @@ const Profile = (props) => {
 }
 
 const UserGallery = (props) => {
-    const { userpagename } = props
-    const router = useContext(__RouterContext)
-    const [ isLoading, data, refresh ] = useSimpleFetch(getUserArtwork, {userpagename})
-    if (isLoading) { return <div></div> }
-    return <div className='user-gallery'>
-        {
-            data.artworks.map(rowData => <ArtBlock key={rowData.artworkid} haveUserLink={false} art={rowData} history={router.history} />)
-        }
-    </div>
+  const { userpagename } = props
+  const router = useContext(__RouterContext)
+  const [ isLoading, data, refresh ] = useSimpleFetch(getUserArtwork, {userpagename})
+  if (isLoading) { return <div></div> }
+  return <div className='user-gallery'>
+    {
+      data.artworks.map(rowData => <ArtBlock key={rowData.artworkid} haveUserLink={false} art={rowData} history={router.history} />)
+    }
+  </div>
 }
 
 const UserPage = (props) => {
