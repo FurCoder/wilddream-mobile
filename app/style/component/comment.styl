@@ -1,5 +1,19 @@
 .comment-list
-    margin-top: 10px
+    margin: 10px 0
+
+    .input-area
+        width: calc(100% - 30px)
+        height 50px
+        margin: 10px 15px 10px
+
+    .submit-button
+        margin-left: 15px
+        height 39px
+        width: 94px
+        background-color: #4e5d6c
+        color: #fff
+        border none
+
 
 .comment-item
     .comment-user-info
@@ -7,9 +21,25 @@
         display flex
         flex-flow: row nowrap
         align-items: center
+        width: 100%
     .user-link
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
         padding-right: 5px
+    .comment-button-group
+        flex: 1
+        text-align: right
+        color: #df691a
+        display flex
+        flex-flow: row nowrap
+        justify-content: flex-end
+    .comment-button
+        margin: 0 10px
     .comment-time
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
         color: #aaa
         font-size: 12px
     .comment-msg
