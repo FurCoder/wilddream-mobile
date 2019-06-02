@@ -3,34 +3,57 @@ import { PullToRefresh, ListView } from 'antd-mobile'
 import { Link } from 'react-router-dom'
 import UserLink from '@comp/UserLink'
 import ArtBlock from '@comp/ArtBlock'
-import { getArtworkList } from '@util/api'
+import JournalBlock from '@comp/JournalBlock'
+import { getActive } from '@util/api'
 import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
 
 const PAGE_LENGTH = 20
 
 const VoidList = new ListView.DataSource({
-  rowHasChanged: (row1, row2) => row1.artworkid !== row2.artworkid,
+  rowHasChanged: (row1, row2) => row1 !== row2
 })
 
-const HomePage = (props) => {
+const ActiveBlock = (props) => {
+  const { rowData, history } = props
+  if (rowData.typeid === '1') {
+    return <ArtBlock art={{
+      ...rowData,
+      artworkid: rowData.contentid
+    }}
+    history={history}
+    />
+  }
+  if (rowData.typeid === '2') {
+    return <JournalBlock
+      journal={{
+        ...rowData,
+        journalid: rowData.contentid
+      }}
+      history={history}
+    />
+  }
+  return <div>12345</div>
+}
+
+const ActivePage = (props) => {
   const [ list, setList ] = useState([])
   const listDataSource = useMemo(() => VoidList.cloneWithRows(list), [list])
-  const [ offset, setOffset ] = useState(0)
+  const [ page, setPage ] = useState(0)
   const load = useCallback((refresh = false) => {
     let aborted = false
-    getArtworkList({ offset: refresh ? 0 : offset, length: PAGE_LENGTH }).then(res => {
+    getActive({ page: refresh ? 1 : page + 1 }).then(res => {
       if (aborted) { return }
       setList(prev => refresh ? res : [...prev, ...res])
-      setOffset(refresh ? 0 : offset + PAGE_LENGTH)
+      setPage(refresh ? 1 : page + 1)
     })
     return () => { aborted = true }
-  }, [offset])
+  }, [page])
   const onRefresh = () => load(true)
   useEffect(load, [])
-  return <div className='home-page'>
+  return <div className='active-page'>
     <ListView
       dataSource={listDataSource}
-      renderRow={rowData => <ArtBlock art={rowData} history={props.history} />}
+      renderRow={rowData => <ActiveBlock rowData={rowData} history={props.history} />}
       initialListSize={5}
       onEndReachedThreshold={150}
       onEndReached={() => load()}
@@ -47,4 +70,4 @@ const HomePage = (props) => {
   </div>
 }
 
-export default HomePage
+export default ActivePage

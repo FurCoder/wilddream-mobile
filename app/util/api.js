@@ -52,3 +52,8 @@ export const deleteWatch = data => request({
   method: 'POST',
 })
 
+export const getActive = data => request({
+  url: `Art/index/activity/ajax/1/page/${data.page}`,
+  data: {},
+  method: 'GET',
+})

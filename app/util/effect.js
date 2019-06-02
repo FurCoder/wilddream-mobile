@@ -40,7 +40,7 @@ export const useSimplePromise = ( promise, isHolding = false) => {
       if (aborted) { return }
       setResult({
         isLoading: false,
-        error,
+        err,
         errDetail: err
       })
     })
