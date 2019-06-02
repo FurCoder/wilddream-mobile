@@ -54,8 +54,20 @@
 http://www.wilddream.net/Art/remote/getArtworkList/dateline/1400000000/datelinemode/gt/offset/0/length/5
 发表时间戳>1400000000的作品按时间戳降序排列，从第0个开始的5个结果
 
+## 最新动态（关注者的作品信息流）
 
-## 单页作品
+- URL /Art/index/activity/ajax/1/page/{page}
+- `{page}`替换为页码（默认为1，每页10条）
+- 必须登录才会返回，否则返回`{'success': false, 'errorInfo': 错误信息}`
+- 返回json数组，按时间戳降序排列，每个元素为关联数组：
+  - `dateline` 时间戳
+  - `contentid` 内容id（如果`typeid`为1则是`artworkid`，如果`typeid`为2则是`journalid`）
+  - `typeid` 类型id（1为Artwork，即绘画作品；2为Journal，即文章）
+  - `description` 描述（`typeid`为1则是绘画作品描述，`typeid`为2则是文章内容）
+  - `favcount` 收藏数
+  - `favid` 收藏id（如果登录用户收藏了本作品则为收藏id，没有收藏则为`null`）
+
+## 单页绘画作品
 
 - URL /Art/view/{artworkid}/ajax/1
 - 无额外参数，`{artworkid}` 替换为作品ID
