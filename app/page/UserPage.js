@@ -6,6 +6,7 @@ import UserScrollList from '@comp/UserScrollList'
 import { CommentList } from '@comp/Comment'
 import BlockState from '@comp/BlockState'
 import TabSwitcher from '@comp/TabSwitcher'
+import FocusButton from '@comp/FocusButton'
 import { Link } from 'react-router-dom'
 
 const Profile = (props) => {
@@ -84,40 +85,40 @@ const Profile = (props) => {
         </div> 
         <div className="profile-item">
             <div className="profile-type">百度贴吧</div>
-            <div className="profile-state">{renderText(tieba, str => <a href={decodeURI(`http://tieba.baidu.com/home/main?un=${str}`)}>
+            <div className="profile-state">{renderText(tieba, str => <a target='_blank' href={decodeURI(`http://tieba.baidu.com/home/main?un=${str}`)}>
                 { str }
             </a>)}</div>
         </div>
         <div className="profile-item">
             <div className="profile-type">Plurk</div>
-            <div className="profile-state">{renderText(plurk, str => <a href={decodeURI(`http://tieba.baidu.com/home/main?un=${str}`)}>
+            <div className="profile-state">{renderText(plurk, str => <a target='_blank' href={decodeURI(`http://tieba.baidu.com/home/main?un=${str}`)}>
                 [链接]
             </a>)}</div>
         </div>
         <div className="profile-item">
             <div className="profile-type">Pixiv</div>
-            <div className="profile-state">{renderText(pixiv, str => <a href={decodeURI(`http://www.pixiv.net/member.php?id=${str}`)}>
+            <div className="profile-state">{renderText(pixiv, str => <a target='_blank' href={decodeURI(`http://www.pixiv.net/member.php?id=${str}`)}>
                 [链接]
             </a>)}</div>
         </div>
 
         <div className="profile-item">
             <div className="profile-type">Deviantart</div>
-            <div className="profile-state">{renderText(deviantart, str => <a href={decodeURI(`http://${str}.deviantart.com`)}>
+            <div className="profile-state">{renderText(deviantart, str => <a target='_blank' href={decodeURI(`http://${str}.deviantart.com`)}>
                 [链接]
             </a>)}</div>
         </div>
 
         <div className="profile-item">
             <div className="profile-type">Facebook</div>
-            <div className="profile-state">{renderText(facebook_url, str => <a href={decodeURI(`http://http://www.facebook.com/${str}`)}>
+            <div className="profile-state">{renderText(facebook_url, str => <a target='_blank' href={decodeURI(`http://http://www.facebook.com/${str}`)}>
                 [链接]
             </a>)}</div>
         </div>
 
         <div className="profile-item">
             <div className="profile-type">Furaffinity</div>
-            <div className="profile-state">{renderText(furaffinity, str => <a href={decodeURI(`http://www.furaffinity.net/user/${str}`)}>
+            <div className="profile-state">{renderText(furaffinity, str => <a target='_blank' href={decodeURI(`http://www.furaffinity.net/user/${str}`)}>
                 [链接]
             </a>)}</div>
         </div>
@@ -156,7 +157,10 @@ const UserPage = (props) => {
         <div className="user-avator">
             <img src={getUserAvatar(data.user.userid, true)} alt=""/>
             <div className="info">
-                <div className="name">{data.user.username}</div>
+                <div className="name">
+                    {data.user.username}
+                    <FocusButton watch={data.watch} userid={data.user.userid}/>
+                </div> 
                 <div className="intro">{data.user.introduction}</div>
             </div>
         </div>

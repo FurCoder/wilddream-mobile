@@ -19,8 +19,8 @@ render(
     <div className='full-size'>
       <LiveRoute exact alwaysLive path="/" component={HomePage} />
       <Route exact path="/login" component={LoginPage} />
-      <Route path="/art-detail/:userid/:artworkid" component={ArtDetail} />
-      <Route path="/user/:userpagename" component={UserPage} />
+      <Route path="/art-detail/:userid/:artworkid" component={props => <ArtDetail key={props.match.params.artworkid} {...props}/>} />
+      <Route path="/user/:userpagename" component={props => <UserPage key={props.match.params.userpagename} {...props}/>} />
     </div>
   </Router>,
   document.getElementById('root')

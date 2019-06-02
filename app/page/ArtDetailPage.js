@@ -4,6 +4,7 @@ import { CommentList } from '@comp/Comment'
 import UserLink from '@comp/UserLink'
 import { getArtWorkDetail } from '@util/api'
 import { useSimpleFetch } from '@util/effect'
+import FavButton from '@comp/FavButton'
 import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
 import { Link } from 'react-router-dom'
 
@@ -23,9 +24,14 @@ const ArtDetail = (props) => {
                     userid={userid}
                     username={data.author.username}
                     userpagename={data.author.userpagename}
+                    withFocus
+                    watch={data.watch}
                 />
                 <UserScrollList
-                    title={`${data.artwork.favcount}只兽收藏了此作品`}
+                    title={<>
+                        {`${data.artwork.favcount}只兽收藏了此作品`}
+                        <FavButton fav={data.fav} artworkid={artworkid} />
+                    </>}
                     userList={data.favlist}
                 />
                 <CommentList

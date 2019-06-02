@@ -4,7 +4,7 @@ export const login = data => request({
   url: '/Art/login/submit/ajax/1',
   data,
   method: 'POST',
-  raw: true,
+  // raw: true,
 })
 
 export const checkLogin = data => request({
@@ -36,6 +36,18 @@ export const addFav = data => request({
 
 export const deleteFav = data => request({
   url: `/Art/artwork/deletefav/artworkid/${data.artworkid}`,
+  data: {},
+  method: 'POST',
+})
+
+export const addWatch = data => request({
+  url: `/Art/Userpage/addwatch/userid/${data.userid}`,
+  data: {},
+  method: 'POST',
+})
+
+export const deleteWatch = data => request({
+  url: `/Art/Userpage/deletewatch/userid/${data.userid}`,
   data: {},
   method: 'POST',
 })

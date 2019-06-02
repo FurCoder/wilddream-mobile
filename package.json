@@ -68,13 +68,14 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
+    "antd": "^3.19.2",
     "antd-mobile": "^2.2.13",
     "moment": "^2.24.0",
     "qs": "^6.6.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-live-route": "^3.1.1",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^5.0.0",
     "react-wx-images-viewer": "^1.0.6",
     "xstream": "^11.10.0"
   }
