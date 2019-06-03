@@ -39,7 +39,7 @@
   - 成功：{'success': true}
   - 失败：{'success': false, 'errorinfo': 错误信息}
 
-# 作品
+# 绘画作品（Artwork，typeid=1）
 
 ## 作品列表
 
@@ -53,19 +53,6 @@
   - 例子
 http://www.wilddream.net/Art/remote/getArtworkList/dateline/1400000000/datelinemode/gt/offset/0/length/5
 发表时间戳>1400000000的作品按时间戳降序排列，从第0个开始的5个结果
-
-## 最新动态（关注者的作品信息流）
-
-- URL /Art/index/activity/ajax/1/page/{page}
-- `{page}`替换为页码（默认为1，每页10条）
-- 必须登录才会返回，否则返回`{'success': false, 'errorInfo': 错误信息}`
-- 返回json数组，按时间戳降序排列，每个元素为关联数组：
-  - `dateline` 时间戳
-  - `contentid` 内容id（如果`typeid`为1则是`artworkid`，如果`typeid`为2则是`journalid`）
-  - `typeid` 类型id（1为Artwork，即绘画作品；2为Journal，即文章）
-  - `description` 描述（`typeid`为1则是绘画作品描述，`typeid`为2则是文章内容）
-  - `favcount` 收藏数
-  - `favid` 收藏id（如果登录用户收藏了本作品则为收藏id，没有收藏则为`null`）
 
 ## 单页绘画作品
 
@@ -81,40 +68,73 @@ http://www.wilddream.net/Art/remote/getArtworkList/dateline/1400000000/datelinem
   - `watch` 当前登录用户是否关注了该作品的作者（仅登录时有该键对）
   - `viewloglist` 如果当前登录用户为该作品作者，则提供该作品的浏览记录（哪些用户在什么时间访问了该作品）
 
-## 收藏作品
+# 文章（Journal，typeid=2）
 
-### 收藏作品
+## 单篇文章
 
-- URL /Art/artwork/addfav/artworkid/{artworkid}
-- 无额外参数，`{artworkid}` 替换为作品ID
+- URL /Journal/view/{journalid}/ajax/1
+- 无额外参数，`{journalid}` 替换为文章ID
+- 返回json关联数组
+  - `success` 请求是否成功
+  - `journal` 文章的各种信息
+  - `author` 作者信息（`username`, `userpagename`）
+  - `commentlist` 评论列表
+  - `favlist` 收藏列表
+  - `fav` 当前登录用户是否收藏本文章（仅登录时有该键对）
+  - `watch` 当前登录用户是否关注了该文章的作者（仅登录时有该键对）
+  - `viewloglist` 如果当前登录用户为该文章作者，则提供该文章的浏览记录（哪些用户在什么时间访问了该文章）
+
+# 收藏内容
+
+`contentid` 为内容id（如果`typeid`为1则是`artworkid`，如果`typeid`为2则是`journalid`）
+
+## 收藏内容
+
+- URL /Art/remote/addfav/contentid/{contentid}/typeid/{typeid}
+- 无额外参数，`{contentid}` 替换为作品ID，`{typeid}`替换为类型id
 - 返回1为成功，0为失败
 
-### 取消收藏作品
+## 取消收藏内容
 
-- URL /Art/artwork/deletefav/artworkid/{artworkid}
-- 无额外参数，`{artworkid}` 替换为作品ID
+- URL /Art/remote/deletefav/contentid/{contentid}/typeid/{typeid}
+- 无额外参数，`{contentid}` 替换为作品ID，`{typeid}`替换为类型id
 - 返回1为成功，0为失败
 
-## 评论作品
+# 评论内容
 
-### 添加评论
+`contentid` 为内容id（如果`typeid`为1则是`artworkid`，如果`typeid`为2则是`journalid`）
 
-- URL /Art/artwork/addcomment/artworkid/{artworkid}/ajax/1
-- `{artworkid}` 替换为作品ID
+## 添加评论
+
+- URL /Art/remote/addcomment/contentid/{contentid}/typeid/{typeid}
+- `{contentid}` 替换为作品ID，`{typeid}`替换为类型id
 - Method POST
   - `content` 评论内容
 - 返回json关联数组
   - 成功：{'success': true}
   - 失败：{'success': false, 'errorInfo': 错误信息}
 
-## 删除评论
+# 删除评论
 
-- URL /Art/artwork/deletecomment/commentid/{commentid}/ajax/1
+- URL /Art/remote/deletecomment/commentid/{commentid}
 - `{commentid}` 替换为评论ID
 - 用户可以删除：1. 自己发表的评论 2. 自己作品底下的评论。其他的评论不可删除。
 - 返回json关联数组
   - 成功：{'success': true}
   - 失败：{'success': false}
+
+## 最新动态（关注者的作品信息流）
+
+- URL /Art/index/activity/ajax/1/page/{page}
+- `{page}`替换为页码（默认为1，每页10条）
+- 必须登录才会返回，否则返回`{'success': false, 'errorInfo': 错误信息}`
+- 返回json数组，按时间戳降序排列，每个元素为关联数组：
+  - `dateline` 时间戳
+  - `contentid` 内容id（如果`typeid`为1则是`artworkid`，如果`typeid`为2则是`journalid`）
+  - `typeid` 类型id（1为Artwork，即绘画作品；2为Journal，即文章）
+  - `description` 描述（`typeid`为1则是绘画作品描述，`typeid`为2则是文章内容）
+  - `favcount` 收藏数
+  - `favid` 收藏id（如果登录用户收藏了本作品则为收藏id，没有收藏则为`null`）
 
 # 用户
 
