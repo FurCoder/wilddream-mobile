@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom'
 const ArtDetail = (props) => {
   const { userid, artworkid } = props.match.params
   const [ isLoading, data, refresh ] = useSimpleFetch(getArtWorkDetail, {artworkid})
-  console.log(getLocalLoginInfo())
   return <div className='art-detail-page'>
     <img className='art-preview' src={getArtWrokPreviewUrl(userid, artworkid)} />
     {

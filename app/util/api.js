@@ -65,6 +65,18 @@ export const deleteFav = data => request({
   method: 'POST',
 })
 
+export const addFavtoJournal = data => request({
+  url: `/Art/journal/addfav/journalid/${data.journalid}`,
+  data: {},
+  method: 'GET',
+})
+
+export const deleteFavtoJournal = data => request({
+  url: `/Art/journal/deletefav/journalid/${data.journalid}`,
+  data: {},
+  method: 'GET',
+})
+
 export const addWatch = data => request({
   url: `/Art/Userpage/addwatch/userid/${data.userid}`,
   data: {},
@@ -107,4 +119,8 @@ export const deleteComment = data => request({
 export const deleteShout = data => request({
   url: `/Art/Userpage/deleteshout/shoutid/${data.shoutid}/`,
   method: 'GET',
+})
+
+export const getJournalDetail = data => request({
+  url: `/Journal/view/${data.journalid}/ajax/1`,
 })

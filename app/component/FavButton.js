@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { __RouterContext }  from 'react-router-dom'
-import { addFav, deleteFav, checkLogin } from '@util/api'
+import { addFav, deleteFav, addFavtoJournal, deleteFavtoJournal, checkLogin } from '@util/api'
 import checkAndGo from '@util/checkAndGo'
 import Icon from 'antd/lib/icon'
 import 'antd/lib/icon/style/css'
@@ -8,12 +8,18 @@ import { Modal } from 'antd-mobile'
 
 const FavButton = (props) => {
   const router = useContext(__RouterContext)
-  const { artworkid, refresh } = props
+  const { artworkid, journalid, refresh } = props
   const [ fav, setFav ] = useState(props.fav)
   const handleClick = async (e) => {
     e.preventDefault()
     if (!checkAndGo()) { return null }
-    const result = await (fav ? deleteFav : addFav)({artworkid})
+    let result = null
+    if (artworkid) {
+      result = await (fav ? deleteFav : addFav)({artworkid})
+    }
+    if (journalid) {
+      result = await (fav ? deleteFavtoJournal : addFavtoJournal)({journalid})
+    }
     if (result === 1) {
       setFav(prev => !prev)
     }

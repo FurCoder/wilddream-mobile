@@ -3,6 +3,7 @@ import { PullToRefresh, ListView } from 'antd-mobile'
 import { Link } from 'react-router-dom'
 import UserLink from '@comp/UserLink'
 import ArtBlock from '@comp/ArtBlock'
+import PageBottomTab from '@comp/PageBottomTab'
 import { getArtworkList } from '@util/api'
 import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
 
@@ -27,7 +28,7 @@ const HomePage = (props) => {
   }, [offset])
   const onRefresh = () => load(true)
   useEffect(load, [])
-  return <div className='home-page'>
+  return <div className='home-page page-bottom-padding'>
     <ListView
       dataSource={listDataSource}
       renderRow={rowData => <ArtBlock art={rowData} history={props.history} />}
@@ -44,6 +45,7 @@ const HomePage = (props) => {
         background: '#2b3e50',
       }}
     />
+    <PageBottomTab activeKey='ALLWORKS' />
   </div>
 }
 

@@ -5,6 +5,7 @@ import UserLink from '@comp/UserLink'
 import ArtBlock from '@comp/ArtBlock'
 import JournalBlock from '@comp/JournalBlock'
 import { getActive } from '@util/api'
+import PageBottomTab from '@comp/PageBottomTab'
 import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
 
 const PAGE_LENGTH = 20
@@ -32,7 +33,7 @@ const ActiveBlock = (props) => {
       history={history}
     />
   }
-  return <div>12345</div>
+  return <div></div>
 }
 
 const ActivePage = (props) => {
@@ -67,6 +68,7 @@ const ActivePage = (props) => {
         background: '#2b3e50',
       }}
     />
+    <PageBottomTab activeKey='ACTIVE' />
   </div>
 }
 

@@ -57,6 +57,11 @@ const config = {
           target: 'https://www.wilddream.net/',
           secure: false,
           changeOrigin: true,
+      },
+      '/Journal': {
+        target: 'https://www.wilddream.net/',
+        secure: false,
+        changeOrigin: true,
       }
     }
   },
