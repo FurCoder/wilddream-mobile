@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo, useContext } from 'react'
 import { __RouterContext }  from 'react-router-dom'
-import { getUser, getUserArtwork } from '@util/api'
+import { getUser, getUserArtwork, deleteShout, getLocalLoginInfo } from '@util/api'
 import { getUserAvatar } from '@util/imgUri'
 import { useSimpleFetch } from '@util/effect'
 import { addShout } from '@util/api'
@@ -202,6 +202,14 @@ const UserPage = (props) => {
                 </>},
         {label: '留言', content: <>
                     <CommentList
+                      enableDelButton
+                      checkItemCanbeDel={(item) => {
+                        if (!getLocalLoginInfo().login) { return false }
+                        if (getLocalLoginInfo().user.userid === data.user.userid) { return true }
+                        if (item.shouterid === getLocalLoginInfo().user.userid) {return true}
+                        return false
+                      }}
+                      delFunc={deleteShout}
                       refresh={refresh}
                       commentList={data.shoutlist}
                       submitParams={{userid: data.user.userid}}

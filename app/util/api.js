@@ -103,3 +103,8 @@ export const deleteComment = data => request({
   url: `/Art/artwork/deletecomment/commentid/${data.commentid}/ajax/1`,
   method: 'GET',
 })
+
+export const deleteShout = data => request({
+  url: `/Art/Userpage/deleteshout/shoutid/${data.shoutid}/`,
+  method: 'GET',
+})

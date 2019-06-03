@@ -26,7 +26,7 @@ const parseComment = (commentStr) => {
     return <>
             <span style={{verticalAlign: 'middle'}}>{beforeStr}@ </span>
             <UserLink little style={{marginRight: -10, marginLeft: -2}} userid={elementParam.userid} username={elementLabel} userpagename={elementParam.userpagename} />
-            <span style={{verticalAlign: 'middle'}}>{afterStr}</span>
+            <span style={{verticalAlign: 'middle'}}>{parseComment(afterStr)}</span>
         </>
   }
   return commentStr
@@ -89,7 +89,11 @@ export const CommentList = (props) => {
     refresh()
   }
   const _reply = username => () => {
-    setTmp(prev => `@${username} ：${prev}`)
+    setTmp(prev => {
+      const atStr = `@${username} ：`
+      if (prev.indexOf(atStr) >= 0) { return prev }
+      return `${atStr}${prev}`
+    })
   }
   return <div className="comment-list">
     {
