@@ -103,6 +103,14 @@ export const addCommentToArtwork = data => request({
   method: 'POST',
 })
 
+export const addComment = data => request({
+  url: `/Art/remote/addcomment/contentid/${data.contentid}/typeid/${data.typeid}`,
+  data: {
+    content: data.content
+  },
+  method: 'POST',
+})
+
 export const addShout = data => request({
   url: `/Art/Userpage/addshout/userid/${data.userid}/ajax/1`,
   data: {
@@ -112,7 +120,7 @@ export const addShout = data => request({
 })
 
 export const deleteComment = data => request({
-  url: `/Art/artwork/deletecomment/commentid/${data.commentid}/ajax/1`,
+  url: `/Art/remote/deletecomment/commentid/${data.commentid}`,
   method: 'GET',
 })
 
