@@ -9,24 +9,24 @@ import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
 import { Link } from 'react-router-dom'
 
 const JournalDetail = (props) => {
-    const { userid, journalid } = props.match.params
-    const [ isLoading, data, refresh ] = useSimpleFetch(getJournalDetail, {journalid})
-    console.log(userid, journalid)
-    return <div className='journal-detail-page'>
-        {
-            isLoading ? <></> : <>
+  const { userid, journalid } = props.match.params
+  const [ isLoading, data, refresh ] = useSimpleFetch(getJournalDetail, {journalid})
+  console.log(userid, journalid)
+  return <div className='journal-detail-page'>
+    {
+      isLoading ? <></> : <>
                 <div className="title">{data.journal.title}</div>
                 <UserLink
-                    padding
-                    userid={data.author.userid}
-                    username={data.author.username}
-                    userpagename={data.author.userpagename}
-                    withFocus
-                    refresh={refresh}
-                    watch={data.watch}
+                  padding
+                  userid={data.author.userid}
+                  username={data.author.username}
+                  userpagename={data.author.userpagename}
+                  withFocus
+                  refresh={refresh}
+                  watch={data.watch}
                 />
                 <div className='journal-preview'
-                    dangerouslySetInnerHTML={{__html:data.journal.content}}
+                  dangerouslySetInnerHTML={{__html:data.journal.content}}
                 />
                 <UserScrollList
                   title={<>
@@ -50,8 +50,8 @@ const JournalDetail = (props) => {
                   submitFunc={addComment}
                 />
             </>
-        }
-    </div>
+    }
+  </div>
 }
 
 export default JournalDetail

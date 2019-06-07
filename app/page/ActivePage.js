@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import UserLink from '@comp/UserLink'
 import ArtBlock from '@comp/ArtBlock'
 import JournalBlock from '@comp/JournalBlock'
-import { getActive } from '@util/api'
+import { getActive, getLocalLoginInfo } from '@util/api'
 import PageBottomTab from '@comp/PageBottomTab'
 import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
 
@@ -44,30 +44,35 @@ const ActivePage = (props) => {
     let aborted = false
     getActive({ page: refresh ? 1 : page + 1 }).then(res => {
       if (aborted) { return }
-      setList(prev => refresh ? res : [...prev, ...res])
-      setPage(refresh ? 1 : page + 1)
+      if (Array.isArray(res)) {
+        setList(prev => refresh ? res : [...prev, ...res])
+        setPage(refresh ? 1 : page + 1)
+      }
     })
     return () => { aborted = true }
   }, [page])
   const onRefresh = () => load(true)
   useEffect(load, [])
   return <div className='active-page'>
-    <ListView
-      dataSource={listDataSource}
-      renderRow={rowData => <ActiveBlock rowData={rowData} history={props.history} />}
-      initialListSize={5}
-      onEndReachedThreshold={150}
-      onEndReached={() => load()}
-      pullToRefresh={<PullToRefresh
-        refreshing={false}
-        onRefresh={onRefresh}
-      />}
-      style={{
-        height: '100%',
-        overflow: 'auto',
-        background: '#2b3e50',
-      }}
-    />
+    {
+      (!getLocalLoginInfo().login) ? <Link to='/login' className="goto-login-button">去登陆</Link> :
+        <ListView
+          dataSource={listDataSource}
+          renderRow={rowData => <ActiveBlock rowData={rowData} history={props.history} />}
+          initialListSize={5}
+          onEndReachedThreshold={150}
+          onEndReached={() => load()}
+          pullToRefresh={<PullToRefresh
+            refreshing={false}
+            onRefresh={onRefresh}
+          />}
+          style={{
+            height: '100%',
+            overflow: 'auto',
+            background: '#2b3e50',
+          }}
+        />
+    }
     <PageBottomTab activeKey='ACTIVE' />
   </div>
 }

@@ -176,7 +176,7 @@ const UserPage = (props) => {
           {data.user.username}
           <FocusButton watch={data.watch} userid={data.user.userid} refresh={refresh}/>
         </div>
-        <div className="intro">{data.user.introduction}</div>
+        <div className="intro">{ data.user.introduction === '' ? '还没有填写任何自我介绍' : data.user.introduction }</div>
       </div>
     </div>
     <TabSwitcher
@@ -217,6 +217,10 @@ const UserPage = (props) => {
                     />
                 </>},
         {label: '详细资料', content: <>
+                    {
+                      getLocalLoginInfo().login && getLocalLoginInfo().user.userid === data.user.userid && 
+                      <Link to='/edit-profile' className='edit-my-profile'>修改我的资料</Link>
+                    }
                     <BlockState
                       stateList={[
                         { label: '作品', state: data.artworkcount },

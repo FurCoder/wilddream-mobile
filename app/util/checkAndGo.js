@@ -8,7 +8,7 @@ const checkAndGo = async (router, title = '操作未成功', content = '需要�
     Modal.alert(title, content, [
       { text: '先不要登', onPress: () => console.log('cancel') },
       { text: '确定', onPress: () => {
-        router.hsistory.push('/login')
+        router.history.push('/login')
       }},
     ])
   }
