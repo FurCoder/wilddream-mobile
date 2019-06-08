@@ -19,6 +19,13 @@ import '@style/index.styl'
 const LiveRoute = withRouter(NotLiveRoute)
 moment.locale('zh-cn')
 
+const app = document.querySelector('#root')
+const hammertime = new Hammer(app)
+
+hammertime.on('swipe', function(ev) {
+  history.back()
+})
+
 const main = () => {
   render(
     <Router>

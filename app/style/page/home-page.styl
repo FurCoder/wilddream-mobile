@@ -5,9 +5,13 @@
 
     .am-list-body
         &:before
-            background: transparent
+            background: transparent !important
         &:after
-            background: transparent
+            background: transparent !important
 
     .list-view-section-body
         background: #2b3e50
+
+    .list-view-section-body
+        padding-top: constant(safe-area-inset-top)
+        padding-top: env(safe-area-inset-top)

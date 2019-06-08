@@ -41,7 +41,7 @@ const EditAvator = (props) => {
         <img className='prev-avator' src={getUserAvatar(userdata.user.userid, true) + `?hash=${Math.random()}`} alt=""/>
         <div className="upload-button">
             选择头像
-            <input className='hidden-file-input' onChange={handleFile} type="file" capture="camera" accept="image/png,image/gif,image/jpeg" />
+            <input className='hidden-file-input' onChange={handleFile} type="file" accept="image/png,image/gif,image/jpeg" />
         </div>
         {
             upload && <>
