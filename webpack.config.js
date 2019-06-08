@@ -2,7 +2,6 @@ const webpack = require('webpack')
 const path = require('path')
 
 const config = {
-  mode: 'production',
   entry: path.resolve(__dirname, 'app/App.js'),
   output: {
     path: path.resolve(__dirname, 'public/js/'),
@@ -41,6 +40,11 @@ const config = {
       }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    })
+  ],
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
     historyApiFallback: true,

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom'
+import { HashRouter as Router, Route, withRouter } from 'react-router-dom'
 import NotLiveRoute from 'react-live-route'
 import moment from 'moment'
 import HomePage from '@page/HomePage'

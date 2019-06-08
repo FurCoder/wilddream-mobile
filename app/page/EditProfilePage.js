@@ -21,7 +21,7 @@ const EditAvator = (props) => {
         }
     }
     const go = async () => {
-        const res = await fetch('/Art/my/avatar/submit/1',
+        const res = await fetch(process.env.NODE_ENV === 'development' ? '' : 'https://www.wilddream.net/' + '/Art/my/avatar/submit/1',
         {
             method: "POST",
             body: form,
@@ -31,7 +31,7 @@ const EditAvator = (props) => {
         })
         console.log(res)
         if (res.ok) {
-            Toast.success('头像成功！')
+            Toast.success('更新头像成功！')
         }
         setUpload(null)
         setForm(null)

@@ -2,7 +2,7 @@ import qs from 'qs'
 import { getCookie } from '@util/token'
 import { showLoading, hideLoading } from '@util/loading'
 
-const location = ''
+const location = process.env.NODE_ENV === 'development' ? '' : 'https://www.wilddream.net'
 
 const safeParse = str => {
   try {
