@@ -230,7 +230,7 @@ const UserPage = (props) => {
                         { label: '粉丝数', state: data.watchedlist.length },
                       ]}
                     />
-                    <Profile profile={data.profile} />
+                    <Profile profile={data.profile || {}} />
                 </>},
       ]}
     />

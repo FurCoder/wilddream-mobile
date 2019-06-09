@@ -49,7 +49,7 @@ const config = {
     contentBase: path.resolve(__dirname, 'public'),
     historyApiFallback: true,
     compress: true,
-    open: true,
+    open: false,
     host: '0.0.0.0',
     headers: {
       'Access-Control-Allow-Origin': '*',

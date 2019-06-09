@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import FastClick from 'fastclick'
 import { render } from 'react-dom'
-import { HashRouter as Router, Route, withRouter } from 'react-router-dom'
+import { HashRouter as Router, Route, withRouter, __RouterContext } from 'react-router-dom'
 import NotLiveRoute from 'react-live-route'
 import moment from 'moment'
 import HomePage from '@page/HomePage'
@@ -19,17 +20,34 @@ import '@style/index.styl'
 const LiveRoute = withRouter(NotLiveRoute)
 moment.locale('zh-cn')
 
-const app = document.querySelector('#root')
+FastClick.attach(document.body)
+
+const app = document.body
 const hammertime = new Hammer(app)
 
-hammertime.on('swipe', function(ev) {
-  history.back()
+const historyStatus = {
+  pathname: null
+}
+
+hammertime.on('swipe', (ev) => {
+  if (['/', '/my', '/active'].indexOf(historyStatus.pathname) === -1) {
+    history.back()
+  } else {
+    console.log('不满足回退条件')
+  }
 })
+
+const DummySwipe = (props) => {
+  const route = useContext(__RouterContext)
+  historyStatus.pathname = route.history.location.pathname
+  return <div></div>
+}
 
 const main = () => {
   render(
     <Router>
       <div className='full-size'>
+        <DummySwipe />
         <LiveRoute exact alwaysLive path="/" component={HomePage} />
         <LiveRoute exact alwaysLive path="/active" component={ActivePage} forceUnmount={(props, params)=> props.pathname === '/login' } />
         <LiveRoute exact livePath={['/', '/active']} path="/my" component={MyPage} />
