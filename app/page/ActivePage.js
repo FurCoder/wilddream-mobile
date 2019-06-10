@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react'
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import { PullToRefresh, ListView } from 'antd-mobile'
 import { Link } from 'react-router-dom'
 import UserLink from '@comp/UserLink'
@@ -37,6 +37,7 @@ const ActiveBlock = (props) => {
 }
 
 const ActivePage = (props) => {
+  const refContainer = useRef(null)
   const [ list, setList ] = useState([])
   const listDataSource = useMemo(() => VoidList.cloneWithRows(list), [list])
   const [ page, setPage ] = useState(0)
@@ -51,12 +52,16 @@ const ActivePage = (props) => {
     })
     return () => { aborted = true }
   }, [page])
-  const onRefresh = () => load(true)
+  const onRefresh = () => {
+    load(true)
+    refContainer.current.scrollTo(0, 0)
+  }
   useEffect(load, [])
   return <div className='active-page'>
     {
       (!getLocalLoginInfo().login) ? <Link to='/login' className="goto-login-button">去登陆</Link> :
         <ListView
+          ref={refContainer}
           dataSource={listDataSource}
           renderRow={rowData => <ActiveBlock rowData={rowData} history={props.history} />}
           initialListSize={5}
@@ -73,7 +78,7 @@ const ActivePage = (props) => {
           }}
         />
     }
-    <PageBottomTab activeKey='ACTIVE' />
+    <PageBottomTab activeKey='ACTIVE' refresh={onRefresh} />
   </div>
 }
 

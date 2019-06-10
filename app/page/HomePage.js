@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react'
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import { PullToRefresh, ListView } from 'antd-mobile'
 import { Link } from 'react-router-dom'
 import UserLink from '@comp/UserLink'
@@ -14,6 +14,7 @@ const VoidList = new ListView.DataSource({
 })
 
 const HomePage = (props) => {
+  const refContainer = useRef(null)
   const [ list, setList ] = useState([])
   const listDataSource = useMemo(() => VoidList.cloneWithRows(list), [list])
   const [ offset, setOffset ] = useState(0)
@@ -26,10 +27,14 @@ const HomePage = (props) => {
     })
     return () => { aborted = true }
   }, [offset])
-  const onRefresh = () => load(true)
+  const onRefresh = () => {
+    load(true)
+    refContainer.current.scrollTo(0, 0)
+  }
   useEffect(load, [])
   return <div className='home-page page-bottom-padding'>
     <ListView
+      ref={refContainer}
       dataSource={listDataSource}
       renderRow={rowData => <ArtBlock art={rowData} history={props.history} />}
       initialListSize={5}
@@ -45,7 +50,7 @@ const HomePage = (props) => {
         background: '#2b3e50',
       }}
     />
-    <PageBottomTab activeKey='ALLWORKS' />
+    <PageBottomTab activeKey='ALLWORKS' refresh={onRefresh}/>
   </div>
 }
 
