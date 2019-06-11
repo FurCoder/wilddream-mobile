@@ -11,6 +11,8 @@ import TabSwitcher from '@comp/TabSwitcher'
 import FocusButton from '@comp/FocusButton'
 import { Link } from 'react-router-dom'
 import ArtBlock from '@comp/ArtBlock'
+import TitleBar from '@comp/TitleBar'
+import WxImageViewer from 'react-wx-images-viewer'
 
 const Profile = (props) => {
   const renderText = (str, render = str => str) => ((str || '') === '' || str === '0') ? <span className='is-void'>暂无</span> : render(str)
@@ -166,11 +168,18 @@ const UserGallery = (props) => {
 
 const UserPage = (props) => {
   const { userpagename } = props.match.params
+  const [ isViewerDisplay, setDisplay ] = useState(false)
   const [ isLoading, data, refresh ] = useSimpleFetch(getUser, {userpagename})
   if (isLoading) { return null }
+  const picUrl = getUserAvatar(data.user.userid, true)
+    + ((getLocalLoginInfo().login && getLocalLoginInfo().user.userid === data.user.userid) ? 
+    `?hash=${localStorage.localAvatorHash}` : '')
+  console.log(picUrl)
   return <div className='user-page'>
+    {isViewerDisplay && <WxImageViewer onClose={() => setDisplay(false)} urls={[picUrl]} index={0}/>}
+    <TitleBar />
     <div className="user-avator">
-      <img src={getUserAvatar(data.user.userid, true)} alt=""/>
+      <img onClick={() => setDisplay(true)} src={picUrl} alt=""/>
       <div className="info">
         <div className="name">
           {data.user.username}

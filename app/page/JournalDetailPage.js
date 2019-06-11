@@ -7,12 +7,14 @@ import { useSimpleFetch } from '@util/effect'
 import FavButton from '@comp/FavButton'
 import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
 import { Link } from 'react-router-dom'
+import TitleBar from '@comp/TitleBar'
 
 const JournalDetail = (props) => {
   const { userid, journalid } = props.match.params
   const [ isLoading, data, refresh ] = useSimpleFetch(getJournalDetail, {journalid})
   console.log(userid, journalid)
   return <div className='journal-detail-page'>
+    <TitleBar />
     {
       isLoading ? <></> : <>
                 <div className="title">{data.journal.title}</div>
