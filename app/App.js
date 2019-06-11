@@ -23,19 +23,11 @@ moment.locale('zh-cn')
 FastClick.attach(document.body)
 
 const app = document.body
-const hammertime = new Hammer(app)
 
 const historyStatus = {
   pathname: null
 }
 
-hammertime.on('swipe', (ev) => {
-  if (['/', '/my', '/active'].indexOf(historyStatus.pathname) === -1) {
-    history.back()
-  } else {
-    console.log('不满足回退条件')
-  }
-})
 
 const DummySwipe = (props) => {
   const route = useContext(__RouterContext)

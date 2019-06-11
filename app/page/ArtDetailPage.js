@@ -5,14 +5,20 @@ import UserLink from '@comp/UserLink'
 import { getArtWorkDetail, addComment, getLocalLoginInfo, deleteComment } from '@util/api'
 import { useSimpleFetch } from '@util/effect'
 import FavButton from '@comp/FavButton'
+import TitleBar from '@comp/TitleBar'
 import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
 import { Link } from 'react-router-dom'
+import WxImageViewer from 'react-wx-images-viewer'
 
 const ArtDetail = (props) => {
   const { userid, artworkid } = props.match.params
+  const [ isViewerDisplay, setDisplay ] = useState(false)
   const [ isLoading, data, refresh ] = useSimpleFetch(getArtWorkDetail, {artworkid})
+  const picSrc = getArtWrokPreviewUrl(userid, artworkid)
   return <div className='art-detail-page'>
-    <img className='art-preview' src={getArtWrokPreviewUrl(userid, artworkid)} />
+    <TitleBar />
+    {isViewerDisplay && <WxImageViewer onClose={() => setDisplay(false)} urls={[picSrc]} index={0}/>}
+    <img className='art-preview' onClick={() => setDisplay(true)} src={picSrc} />
     {
       isLoading || <>
                 <div className="art-info-title">{data.artwork.title}</div>

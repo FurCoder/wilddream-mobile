@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd www && rm -rf css img js/bundle.js && cp -R ../../public/{js,css,img} ./ && cd .. && cordova run ios"
+    "start": "cd www && rm -rf css img js/bundle.js && cp -R ../../public/{js,css,img} ./ && cd .. "
   },
   "keywords": [
     "ecosystem:cordova"
@@ -14,7 +14,6 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "dependencies": {
-    "cordova-android": "^8.0.0",
     "cordova-ios": "^5.0.1",
     "cordova-osx": "^5.0.0"
   },
@@ -27,7 +26,6 @@
     },
     "platforms": [
       "ios",
-      "android",
       "osx"
     ]
   }

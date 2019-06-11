@@ -24,5 +24,6 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <preference name="DisallowOverscroll" value="true" />
+    <engine name="ios" spec="^5.0.1" />
+    <engine name="osx" spec="^5.0.0" />
 </widget>
-

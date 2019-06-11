@@ -1,0 +1,33 @@
+.title-bar-container
+    z-index 1
+    position: fixed
+    top: 0
+    left 0
+    width 100%
+    padding-top: constant(safe-area-inset-top)
+    padding-top: env(safe-area-inset-top)
+    // background: rgba(0, 0, 0, 0.02)
+    .title-bar
+        height 40px
+        display flex
+        flex-flow: row nowrap
+        color: #fff
+
+    .back-button
+        height 40px
+        width: 40px
+        line-height: 40px
+        font-size: 20px
+        background: rgba(0, 0, 0, 0.2)
+        text-align: center
+    .title
+        flex: 1
+        text-align: center
+        overflow hidden
+        text-overflow: ellipsis
+        white-space nowrap
+        line-height: 40px
+        font-size: 16px
+    .right-button
+        height 40px
+        width: 40px

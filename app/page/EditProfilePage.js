@@ -3,6 +3,7 @@ import TabSwitcher from '@comp/TabSwitcher'
 import { getLocalLoginInfo } from '@util/api'
 import { getUserAvatar } from '@util/imgUri'
 import { Toast } from 'antd-mobile'
+import TitleBar from '@comp/TitleBar'
 
 const EditAvator = (props) => {
     const userdata = getLocalLoginInfo()
@@ -21,7 +22,7 @@ const EditAvator = (props) => {
         }
     }
     const go = async () => {
-        const res = await fetch(process.env.NODE_ENV === 'development' ? '' : 'https://www.wilddream.net/' + '/Art/my/avatar/submit/1',
+        const res = await fetch((process.env.NODE_ENV === 'development' ? '' : 'https://www.wilddream.net/') + '/Art/my/avatar/submit/1',
         {
             method: "POST",
             body: form,
@@ -32,6 +33,7 @@ const EditAvator = (props) => {
         console.log(res)
         if (res.ok) {
             Toast.success('更新头像成功！')
+            localStorage.localAvatorHash = `${Math.random()}`
         }
         setUpload(null)
         setForm(null)
@@ -57,6 +59,7 @@ const EditAvator = (props) => {
 
 const EditProfilePage = (props) => {
     return <div className='edit-profile' >
+        <TitleBar mode='relative' title='资料编辑'/>
         <TabSwitcher
             tabList={[
                 {label: '基本资料', content: <></>, },

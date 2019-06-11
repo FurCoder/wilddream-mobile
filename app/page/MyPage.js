@@ -34,7 +34,7 @@ const MyPage = (props) => {
                 <></> : (
                   (!data.login) ? gotoLogin : <>
                     <Link to={`/user/${data.user.userpagename}`} className="user-profile-box">
-                      <img src={getUserAvatar(data.user.userid, true)} className="user-avator"/>
+                      <img src={getUserAvatar(data.user.userid, true) + `?hash=${localStorage.localAvatorHash}`} className="user-avator"/>
                       <div className="user-info">
                         <div className="user-username">{data.user.username}</div>
                         <div className="user-intro">{data.user.introduction === '' ? '还没有填写自我简介......' : data.user.introduction}</div>
