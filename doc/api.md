@@ -159,9 +159,18 @@ http://www.wilddream.net/Art/remote/getArtworkList/dateline/1400000000/datelinem
 - URL /Art/userpage/gallery/userpagename/{userpagename}/ajax/1
 - `{userpagename}` 替换为用户的用户页域名后缀
 - 可后接`/folderid/{folderid}`返回某一作品文件夹下的作品列表
-- 返回json关联数组
+- 如成功，返回json关联数组
+  - `success` = 1
   - `artworks` 作品列表
   - `folders` 作品文件夹列表
+
+## 用户文章列表
+
+- URL /Art/userpage/journal/userpagename/{userpagename}/ajax/1
+- `{userpagename}` 替换为用户的用户页域名后缀
+- 如成功，返回json关联数组
+  - `success` = 1
+  - `journals` 文章列表
 
 ## 用户收藏列表
 
