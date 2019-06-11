@@ -39,6 +39,38 @@
   - 成功：{'success': true}
   - 失败：{'success': false, 'errorinfo': 错误信息}
 
+## 设置
+
+### 基本资料设置
+
+- URL /Art/my/profile/submit/1/ajax/1
+- Method POST
+- params
+    - 参考 https://www.wilddream.net/art/my/profile 的网页表单
+- 返回json关联数组
+  - 成功：{'success': true}
+  - 失败：{'success': false, 'errorinfo': 错误信息}
+
+### 详细资料及兽相关资料设置
+
+- URL /Art/my/detailed_profile/submit/1/ajax/1
+- Method POST
+- params
+    - 参考 https://www.wilddream.net/art/my/detailed_profile 的网页表单
+- 返回json关联数组
+  - 成功：{'success': true}
+  - 失败：{'success': false, 'errorinfo': 错误信息}
+
+### 头像设置
+
+- URL /Art/my/avatar/submit/1/ajax/1
+- Method POST
+- params
+    - `image` 头像图片
+- 返回json关联数组
+  - 成功：{'success': true}
+  - 失败：{'success': false, 'errorinfo': 错误信息}
+
 # 绘画作品（Artwork，typeid=1）
 
 ## 作品列表
