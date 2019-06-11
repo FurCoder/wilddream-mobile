@@ -245,6 +245,14 @@ http://www.wilddream.net/Art/remote/getArtworkList/dateline/1400000000/datelinem
   - 成功：{'success': true}
   - 失败：{'success': false, 'errorInfo': 失败原因}
 
+# 社群功能
+
+## 委托列表
+
+- URL /Community/Commissionpage/index/ajax/1/page/{page}
+- `{page}` 替换为页码，可后加 `/keyword/{keyword}` 支持搜索关键字
+- 返回委托列表的json数组
+
 # 图片
 
 ## 作品图片
