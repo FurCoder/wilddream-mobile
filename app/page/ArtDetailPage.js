@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import UserScrollList from '@comp/UserScrollList'
 import { CommentList } from '@comp/Comment'
 import UserLink from '@comp/UserLink'
-import { getArtWorkDetail, addCommentToArtwork, getLocalLoginInfo, deleteComment } from '@util/api'
+import { getArtWorkDetail, addComment, getLocalLoginInfo, deleteComment } from '@util/api'
 import { useSimpleFetch } from '@util/effect'
 import FavButton from '@comp/FavButton'
 import { getUserAvatar, getArtWrokPreviewUrl } from '@util/imgUri'
@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom'
 const ArtDetail = (props) => {
   const { userid, artworkid } = props.match.params
   const [ isLoading, data, refresh ] = useSimpleFetch(getArtWorkDetail, {artworkid})
-  console.log(getLocalLoginInfo())
   return <div className='art-detail-page'>
     <img className='art-preview' src={getArtWrokPreviewUrl(userid, artworkid)} />
     {
@@ -47,8 +46,8 @@ const ArtDetail = (props) => {
                   delFunc={deleteComment}
                   commentList={data.commentlist}
                   refresh={refresh}
-                  submitParams={{artworkid}}
-                  submitFunc={addCommentToArtwork}
+                  submitParams={{contentid: artworkid, typeid: '1'}}
+                  submitFunc={addComment}
                 />
             </>
     }

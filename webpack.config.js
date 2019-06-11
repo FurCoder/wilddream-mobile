@@ -2,7 +2,6 @@ const webpack = require('webpack')
 const path = require('path')
 
 const config = {
-  mode: 'production',
   entry: path.resolve(__dirname, 'app/App.js'),
   output: {
     path: path.resolve(__dirname, 'public/js/'),
@@ -41,12 +40,17 @@ const config = {
       }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    })
+  ],
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
     historyApiFallback: true,
     compress: true,
     open: false,
-    host: '127.0.0.1',
+    host: '0.0.0.0',
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
@@ -57,6 +61,11 @@ const config = {
           target: 'https://www.wilddream.net/',
           secure: false,
           changeOrigin: true,
+      },
+      '/Journal': {
+        target: 'https://www.wilddream.net/',
+        secure: false,
+        changeOrigin: true,
       }
     }
   },

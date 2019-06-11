@@ -4,7 +4,6 @@
   "description": "wilddream-mobile Project",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --progress --colors --mode development",
-    "dev": "cross-env NODE_ENV=development webpack -p --progress --colors --mode development",
     "build": "cross-env NODE_ENV=production webpack -p --progress --colors --mode production",
     "lint": "eslint app/",
     "fix": "eslint app/ --fix",
@@ -70,6 +69,7 @@
   "dependencies": {
     "antd": "^3.19.2",
     "antd-mobile": "^2.2.13",
+    "fastclick": "^1.0.6",
     "moment": "^2.24.0",
     "qs": "^6.6.0",
     "react": "^16.8.1",

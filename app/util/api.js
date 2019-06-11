@@ -65,6 +65,18 @@ export const deleteFav = data => request({
   method: 'POST',
 })
 
+export const addFavtoJournal = data => request({
+  url: `/Art/journal/addfav/journalid/${data.journalid}`,
+  data: {},
+  method: 'GET',
+})
+
+export const deleteFavtoJournal = data => request({
+  url: `/Art/journal/deletefav/journalid/${data.journalid}`,
+  data: {},
+  method: 'GET',
+})
+
 export const addWatch = data => request({
   url: `/Art/Userpage/addwatch/userid/${data.userid}`,
   data: {},
@@ -91,6 +103,14 @@ export const addCommentToArtwork = data => request({
   method: 'POST',
 })
 
+export const addComment = data => request({
+  url: `/Art/remote/addcomment/contentid/${data.contentid}/typeid/${data.typeid}`,
+  data: {
+    content: data.content
+  },
+  method: 'POST',
+})
+
 export const addShout = data => request({
   url: `/Art/Userpage/addshout/userid/${data.userid}/ajax/1`,
   data: {
@@ -100,11 +120,15 @@ export const addShout = data => request({
 })
 
 export const deleteComment = data => request({
-  url: `/Art/artwork/deletecomment/commentid/${data.commentid}/ajax/1`,
+  url: `/Art/remote/deletecomment/commentid/${data.commentid}`,
   method: 'GET',
 })
 
 export const deleteShout = data => request({
   url: `/Art/Userpage/deleteshout/shoutid/${data.shoutid}/`,
   method: 'GET',
+})
+
+export const getJournalDetail = data => request({
+  url: `/Journal/view/${data.journalid}/ajax/1`,
 })

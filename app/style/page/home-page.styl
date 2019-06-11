@@ -1,13 +1,17 @@
 .home-page
     background #2b3e50
-    padding: 10px 10px 0
+    padding: 0 10px
     height 100%
 
     .am-list-body
         &:before
-            background: transparent
+            background: transparent !important
         &:after
-            background: transparent
+            background: transparent !important
 
     .list-view-section-body
         background: #2b3e50
+
+    .list-view-section-body
+        padding-top: constant(safe-area-inset-top)
+        padding-top: env(safe-area-inset-top)

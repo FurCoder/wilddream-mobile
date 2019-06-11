@@ -1,0 +1,40 @@
+.page-bottom-tab
+    padding-bottom: constant(safe-area-inset-bottom)
+    padding-bottom: env(safe-area-inset-bottom)
+    width 100%
+    position fixed
+    bottom 0
+    left 0
+    display flex
+    flex-flow: row nowrap
+    background: #515d6b
+    box-shadow: 2px 2px 5px #333333;
+
+    .page-bottom-tab-block
+        flex: 1
+        height 50px
+        text-align: center
+        display flex
+        flex-flow: column nowrap
+        justify-content: center
+
+    .tab-icon
+        line-height: 14px
+        font-size: 14px
+        color: #fff
+    
+    .tab-label
+        margin-top: 6px
+        line-height: 12px
+        font-size: 12px
+        color: #fff
+    
+    .page-bottom-tab-block-active
+        .tab-icon
+            color: #df691a
+        .tab-label
+            color: #df691a
+
+
+.page-bottom-padding
+    padding-bottom: 50px

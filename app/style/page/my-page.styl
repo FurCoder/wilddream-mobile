@@ -1,0 +1,49 @@
+$demi-back = #515d6b
+.my-page
+    height 100%
+    padding-top: constant(safe-area-inset-top)
+    padding-top: env(safe-area-inset-top)
+
+    .user-profile-box
+        display block
+        height 100px
+        background $demi-back
+        display flex
+        flex-flow: row nowrap
+        align-items: center
+
+        .user-avator
+            margin-left: 10px
+            height 80px
+            width 80px
+            border-radius: 80px
+            object-fit: cover
+        
+        .user-info
+            flex: 1
+            margin-left: 10px
+            height 80px
+            .user-username
+                color: #ebebeb
+                font-size: 15px
+                line-height: 30px
+            .user-intro
+                color: #fff
+                font-size: 13px
+                line-height: 20px
+
+    .user-group
+        margin-top: 20px
+
+    .user-line 
+        height 40px
+        line-height 40px
+        font-size: 13px
+        color: #fff
+        background $demi-back
+        padding-left: 10px
+        display block
+
+        i
+            font-size: 15px
+            margin-right: 5px
