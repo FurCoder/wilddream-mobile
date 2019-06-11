@@ -102,11 +102,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		bGm3mygOz5wyMXjsgMTOboHxmuw=
+		ZggbnoczYTUP2HY7SqSQ+wlguwQ=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		CU7FTHtgjB9D/uhAIJzMbNIUHdQ=
+		hCGCSQT3yXyH+7AIjhPTVm5UeYE=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -114,7 +114,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		bSbQokui43UkOFifLf288Q7Z5X0=
+		jI+aDlhh5bZnDWonGDbrtxR605g=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -194,7 +194,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		NRqA80xuey2dL8ImS4l8zLmQR+Y=
+		R1iWKZ+mH13uK6lNTNCroOUJ6pg=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -202,7 +202,7 @@
 		</data>
 		<key>config.xml</key>
 		<data>
-		6LnPiJ3RtEPcZKYRnmpy7CDh0dw=
+		nnO2xESxl5g6S8iaU5A7NY/jlE0=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
@@ -230,7 +230,7 @@
 		</data>
 		<key>www/cordova_plugins.js</key>
 		<data>
-		4/u6zKPB04pLvnKY56/REoSOXXU=
+		SE2sfAPXIkQcwTjVib0HkSvKri0=
 		</data>
 		<key>www/css/iconfont.css</key>
 		<data>
@@ -246,11 +246,15 @@
 		</data>
 		<key>www/js/bundle.js</key>
 		<data>
-		iB/7hs0moGkpiwY1FYPvPUvlank=
+		FmY39sLHv/RU4jZj3ofQXAsvdQo=
 		</data>
 		<key>www/js/hammer.min.js</key>
 		<data>
 		8t6EU/zLNLrybXhK+pZdvowNFVA=
+		</data>
+		<key>www/plugins/cordova-plugin-keyboard/www/keyboard.js</key>
+		<data>
+		WyLdl2pt0J966YOuExEHxZZbUuw=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -523,22 +527,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bGm3mygOz5wyMXjsgMTOboHxmuw=
+			ZggbnoczYTUP2HY7SqSQ+wlguwQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			l0O8hZPwDKDocCii16OqDaoc1vMjBrn/1r57i+xMJL4=
+			Sg2BbjqVPrt9dTX4enLV3FRBfQJmoGsi9M4bH02llA8=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			CU7FTHtgjB9D/uhAIJzMbNIUHdQ=
+			hCGCSQT3yXyH+7AIjhPTVm5UeYE=
 			</data>
 			<key>hash2</key>
 			<data>
-			D/7u6zsF7EwEKAIQR1XOZejYCksIRY1O8Zqj9Fyj5nE=
+			+ZY75LVHDVdKeetpEaFQda0rLOz6Bxr560vC8SHU4Nw=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -556,11 +560,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bSbQokui43UkOFifLf288Q7Z5X0=
+			jI+aDlhh5bZnDWonGDbrtxR605g=
 			</data>
 			<key>hash2</key>
 			<data>
-			ubzETBfrdQuptWqU4MO+7hsKXIgPzcqZQVXY8QHhNcY=
+			Tt6euEuz10NQLg6NKxMhRzEObvXN6F1k4d+ahd59/P0=
 			</data>
 		</dict>
 		<key>LaunchImage-1100-Landscape-2436h@3x.png</key>
@@ -765,22 +769,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			NRqA80xuey2dL8ImS4l8zLmQR+Y=
+			R1iWKZ+mH13uK6lNTNCroOUJ6pg=
 			</data>
 			<key>hash2</key>
 			<data>
-			wm1KTIhky+9PUP+E0DOEEo4fgseqxzkJf0RQRDPwhyg=
+			vyl1WuypF7ii5tsV+fLiJy7K+GJ7CSaPwP1SOljanVY=
 			</data>
 		</dict>
 		<key>config.xml</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			6LnPiJ3RtEPcZKYRnmpy7CDh0dw=
+			nnO2xESxl5g6S8iaU5A7NY/jlE0=
 			</data>
 			<key>hash2</key>
 			<data>
-			9LPftNNq71IznD09325SaoN0sYas0FLetFAYkPyVtBc=
+			CrWdbSI5y0vmWsfjmWBjEcGnYPI3j3Kynf/asWnX+rI=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
@@ -853,11 +857,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4/u6zKPB04pLvnKY56/REoSOXXU=
+			SE2sfAPXIkQcwTjVib0HkSvKri0=
 			</data>
 			<key>hash2</key>
 			<data>
-			zr7iky70Gjx/8M9Wc5I+DAWhn2Hu1AlbZIa+bKKjEM8=
+			5b8H/+M5AgZxVnNmNzo2B940jan/5Y3D6L1jq7BEuCE=
 			</data>
 		</dict>
 		<key>www/css/iconfont.css</key>
@@ -897,11 +901,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iB/7hs0moGkpiwY1FYPvPUvlank=
+			FmY39sLHv/RU4jZj3ofQXAsvdQo=
 			</data>
 			<key>hash2</key>
 			<data>
-			7zVNZNERfgY4qH69xtB4fT9osl6demtH1uTn8AI0aQo=
+			SwTKW3NzH5ibOgHSMKtNPdrD+wnGDFFLMyCOMcyh6ro=
 			</data>
 		</dict>
 		<key>www/js/hammer.min.js</key>
@@ -913,6 +917,17 @@
 			<key>hash2</key>
 			<data>
 			ihtY1iTutH6eMHNTGl02TkGi54U8BShzp5kX+X3Qu0Q=
+			</data>
+		</dict>
+		<key>www/plugins/cordova-plugin-keyboard/www/keyboard.js</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			WyLdl2pt0J966YOuExEHxZZbUuw=
+			</data>
+			<key>hash2</key>
+			<data>
+			eKftgcWakkyDWJRmLnAMR0rc/RlpC0JVdrivYDckqt4=
 			</data>
 		</dict>
 	</dict>

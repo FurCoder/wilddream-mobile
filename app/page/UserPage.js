@@ -209,7 +209,7 @@ const UserPage = (props) => {
                       userList={data.viewlogs}
                     />
                 </>},
-        {label: '留言', content: <>
+        {label: '留言', content: <div className='comment-tab'>
                     <CommentList
                       enableDelButton
                       checkItemCanbeDel={(item) => {
@@ -224,7 +224,8 @@ const UserPage = (props) => {
                       submitParams={{userid: data.user.userid}}
                       submitFunc={addShout}
                     />
-                </>},
+
+                </div>},
         {label: '详细资料', content: <>
                     {
                       getLocalLoginInfo().login && getLocalLoginInfo().user.userid === data.user.userid && 

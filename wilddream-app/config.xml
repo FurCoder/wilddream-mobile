@@ -26,4 +26,5 @@
     <preference name="DisallowOverscroll" value="true" />
     <engine name="ios" spec="^5.0.1" />
     <engine name="osx" spec="^5.0.0" />
+    <preference name="KeyboardShrinksView" value="true" />
 </widget>
