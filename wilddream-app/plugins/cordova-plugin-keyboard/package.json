@@ -1,0 +1,62 @@
+{
+  "_from": "cordova-plugin-keyboard",
+  "_id": "cordova-plugin-keyboard@1.2.0",
+  "_inBundle": false,
+  "_integrity": "sha512-Zng4SgDQQ2BCqeDOvrsgNlM9tcjnxmJoh0Qhex0KltMsoR0g/ONbMTpaVvI8EhNKVO8HJPnhFxxzHxrCPLQ7sQ==",
+  "_location": "/cordova-plugin-keyboard",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-keyboard",
+    "name": "cordova-plugin-keyboard",
+    "escapedName": "cordova-plugin-keyboard",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-keyboard/-/cordova-plugin-keyboard-1.2.0.tgz",
+  "_shasum": "8445812643e4763e7beffed39d279f151bb89aeb",
+  "_spec": "cordova-plugin-keyboard",
+  "_where": "/Users/wangziyang/self-work/wilddream-mobile/wilddream-app",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://github.com/cjpearson/cordova-plugin-keyboard/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-keyboard",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova Keyboard Plugin",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.2.0"
+    }
+  ],
+  "homepage": "https://github.com/cjpearson/cordova-plugin-keyboard#readme",
+  "keywords": [
+    "cordova",
+    "keyboard",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "Apache 2.0",
+  "name": "cordova-plugin-keyboard",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjpearson/cordova-plugin-keyboard.git"
+  },
+  "version": "1.2.0"
+}
