@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo, useContext } from 'react'
 import { __RouterContext }  from 'react-router-dom'
-import { getUser, getUserArtwork, deleteShout, getLocalLoginInfo } from '@util/api'
+import { getUser, getUserArtwork, deleteShout, getLocalLoginInfo, getUserJournal } from '@util/api'
 import { getUserAvatar } from '@util/imgUri'
 import { useSimpleFetch } from '@util/effect'
 import { addShout } from '@util/api'
@@ -11,6 +11,7 @@ import TabSwitcher from '@comp/TabSwitcher'
 import FocusButton from '@comp/FocusButton'
 import { Link } from 'react-router-dom'
 import ArtBlock from '@comp/ArtBlock'
+import JournalBlock from '@comp/JournalBlock'
 import TitleBar from '@comp/TitleBar'
 import WxImageViewer from 'react-wx-images-viewer'
 
@@ -166,6 +167,18 @@ const UserGallery = (props) => {
   </div>
 }
 
+const UserJournal = (props) => {
+  const { userpagename } = props
+  const router = useContext(__RouterContext)
+  const [ isLoading, data, refresh ] = useSimpleFetch(getUserJournal, {userpagename})
+  if (isLoading) { return <div></div> }
+  return <div className='user-gallery'>
+    {
+      data.journals.map(rowData => <JournalBlock key={rowData.journalid} haveUserLink={false} journal={rowData} history={router.history} />)
+    }
+  </div>
+}
+
 const UserPage = (props) => {
   const { userpagename } = props.match.params
   const [ isViewerDisplay, setDisplay ] = useState(false)
@@ -193,23 +206,10 @@ const UserPage = (props) => {
         {label: '画廊', content: <>
             <UserGallery userpagename={userpagename} />
         </>},
-        {label: '朋友们', content: <>
-                    <UserScrollList
-                      noScroll
-                      title={'他关注了'}
-                      userList={data.watchlist}
-                    />
-                    <UserScrollList
-                      noScroll
-                      title={'关注他的'}
-                      userList={data.watchedlist}
-                    />
-                    <UserScrollList
-                      title={'最近访问的fur们'}
-                      userList={data.viewlogs}
-                    />
+        {label: '文章', content: <>
+          <UserJournal userpagename={userpagename} />
                 </>},
-        {label: '留言', content: <div className='comment-tab'>
+        {label: '朋友们', content: <div className='comment-tab'>
                     <CommentList
                       enableDelButton
                       checkItemCanbeDel={(item) => {
@@ -224,7 +224,20 @@ const UserPage = (props) => {
                       submitParams={{userid: data.user.userid}}
                       submitFunc={addShout}
                     />
-
+                    <UserScrollList
+                      noScroll
+                      title={'他关注了'}
+                      userList={data.watchlist}
+                    />
+                    <UserScrollList
+                      noScroll
+                      title={'关注他的'}
+                      userList={data.watchedlist}
+                    />
+                    <UserScrollList
+                      title={'最近访问的fur们'}
+                      userList={data.viewlogs}
+                    />
                 </div>},
         {label: '详细资料', content: <>
                     {

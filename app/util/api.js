@@ -43,6 +43,11 @@ export const getUserArtwork = data => request({
   data,
 })
 
+export const getUserJournal = data => request({
+  url: `/Art/userpage/journal/userpagename/${data.userpagename}/ajax/1`,
+  data,
+})
+
 export const getArtworkList = data => request({
   url: '/Art/remote/getArtworkList',
   data,
