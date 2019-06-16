@@ -14,6 +14,7 @@ import ArtBlock from '@comp/ArtBlock'
 import JournalBlock from '@comp/JournalBlock'
 import TitleBar from '@comp/TitleBar'
 import WxImageViewer from 'react-wx-images-viewer'
+import { ArtLevelMap, ArtSpeciality } from '@const/FormMap'
 
 const Profile = (props) => {
   const renderText = (str, render = str => str) => ((str || '') === '' || str === '0') ? <span className='is-void'>暂无</span> : render(str)
@@ -40,22 +41,6 @@ const Profile = (props) => {
     art_level,
     art_speciality,
   } = props.profile
-  const ArtLevelMap = [
-    {en: 'hobbyist', cn: '业余'},
-    {en: 'student', cn: '学生'},
-    {en: 'professional', cn: '专业'},
-  ]
-  const ArtSpeciality = [
-    {en: 'digital_art', cn: '数字绘画'},
-    {en: 'raditional_art', cn: '传统绘画'},
-    {en: 'design', cn: '设计'},
-    {en: 'film_and_anime', cn: '视频和动画'},
-    {en: 'literature', cn: '文学'},
-    {en: 'photography', cn: '摄影'},
-    {en: 'artisan', cn: '手工制作'},
-    {en: 'fursuiter', cn: '兽装制作和表演'},
-    {en: 'other', cn: '其他'},
-  ]
   return <div className="user-profile-list">
     <div className="profile-item">
       <div className="profile-type">所在地</div>
@@ -185,8 +170,8 @@ const UserPage = (props) => {
   const [ isLoading, data, refresh ] = useSimpleFetch(getUser, {userpagename})
   if (isLoading) { return null }
   const picUrl = getUserAvatar(data.user.userid, true)
-    + ((getLocalLoginInfo().login && getLocalLoginInfo().user.userid === data.user.userid) ? 
-    `?hash=${localStorage.localAvatorHash}` : '')
+    + ((getLocalLoginInfo().login && getLocalLoginInfo().user.userid === data.user.userid) ?
+      `?hash=${localStorage.localAvatorHash}` : '')
   console.log(picUrl)
   return <div className='user-page'>
     {isViewerDisplay && <WxImageViewer onClose={() => setDisplay(false)} urls={[picUrl]} index={0}/>}
@@ -210,20 +195,36 @@ const UserPage = (props) => {
           <UserJournal userpagename={userpagename} />
                 </>},
         {label: '朋友们', content: <div className='comment-tab'>
-                    <CommentList
-                      enableDelButton
-                      checkItemCanbeDel={(item) => {
-                        if (!getLocalLoginInfo().login) { return false }
-                        if (getLocalLoginInfo().user.userid === data.user.userid) { return true }
-                        if (item.shouterid === getLocalLoginInfo().user.userid) {return true}
-                        return false
-                      }}
-                      delFunc={deleteShout}
-                      refresh={refresh}
-                      commentList={data.shoutlist}
-                      submitParams={{userid: data.user.userid}}
-                      submitFunc={addShout}
+          <CommentList
+            enableDelButton
+            checkItemCanbeDel={(item) => {
+              if (!getLocalLoginInfo().login) { return false }
+              if (getLocalLoginInfo().user.userid === data.user.userid) { return true }
+              if (item.shouterid === getLocalLoginInfo().user.userid) {return true}
+              return false
+            }}
+            delFunc={deleteShout}
+            refresh={refresh}
+            commentList={data.shoutlist}
+            submitParams={{userid: data.user.userid}}
+            submitFunc={addShout}
+          />
+        </div>},
+        {label: '详细资料', content: <>
+                    {
+                      getLocalLoginInfo().login && getLocalLoginInfo().user.userid === data.user.userid &&
+                      <Link to='/edit-profile' className='edit-my-profile'>修改我的资料</Link>
+                    }
+                    <BlockState
+                      stateList={[
+                        { label: '作品', state: data.artworkcount },
+                        { label: '被收藏', state: data.favcount },
+                        { label: '总浏览量', state: data.pageviews },
+                        { label: '关注数', state: data.watchlist.length },
+                        { label: '粉丝数', state: data.watchedlist.length },
+                      ]}
                     />
+                    <Profile profile={data.profile || {}} />
                     <UserScrollList
                       noScroll
                       title={'他关注了'}
@@ -238,22 +239,6 @@ const UserPage = (props) => {
                       title={'最近访问的fur们'}
                       userList={data.viewlogs}
                     />
-                </div>},
-        {label: '详细资料', content: <>
-                    {
-                      getLocalLoginInfo().login && getLocalLoginInfo().user.userid === data.user.userid && 
-                      <Link to='/edit-profile' className='edit-my-profile'>修改我的资料</Link>
-                    }
-                    <BlockState
-                      stateList={[
-                        { label: '作品', state: data.artworkcount },
-                        { label: '被收藏', state: data.favcount },
-                        { label: '总浏览量', state: data.pageviews },
-                        { label: '关注数', state: data.watchlist.length },
-                        { label: '粉丝数', state: data.watchedlist.length },
-                      ]}
-                    />
-                    <Profile profile={data.profile || {}} />
                 </>},
       ]}
     />

@@ -23,8 +23,9 @@ const request = async ({
   data = {},
   method = 'GET',
   raw,
+  isLoadingDisplay = true,
 }) => {
-  setTimeout(showLoading, 0)
+  if (isLoadingDisplay) { setTimeout(showLoading, 0) }
   const dataKeyNum = Object.keys(data).length
   const stringifyData = qs.stringify(data)
   const requestURL = location + url + ((dataKeyNum!==0 && method === 'GET') ? `?${stringifyData}` : '')
@@ -48,7 +49,7 @@ const request = async ({
       }
     )
   })
-  setTimeout(hideLoading, 0)
+  if (isLoadingDisplay) { setTimeout(hideLoading, 0) }
   if (raw) {
     return request
   }

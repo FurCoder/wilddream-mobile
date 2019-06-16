@@ -102,11 +102,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		ZggbnoczYTUP2HY7SqSQ+wlguwQ=
+		6TSXAVGXnz8FDfAlY8MCabj+V90=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		hCGCSQT3yXyH+7AIjhPTVm5UeYE=
+		IDmDu584mFZKv8EaXELUGSspdnU=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -114,7 +114,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		jI+aDlhh5bZnDWonGDbrtxR605g=
+		3IS6G1i9w/b4aCJx9vLScSBniEc=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -194,7 +194,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		R1iWKZ+mH13uK6lNTNCroOUJ6pg=
+		tSxgS5I5aj/gmaa8bO3Xcg2Wj0c=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -246,7 +246,7 @@
 		</data>
 		<key>www/js/bundle.js</key>
 		<data>
-		FmY39sLHv/RU4jZj3ofQXAsvdQo=
+		maGsUEU9DMcIISy5vM+nCJXPzBw=
 		</data>
 		<key>www/js/hammer.min.js</key>
 		<data>
@@ -527,22 +527,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ZggbnoczYTUP2HY7SqSQ+wlguwQ=
+			6TSXAVGXnz8FDfAlY8MCabj+V90=
 			</data>
 			<key>hash2</key>
 			<data>
-			Sg2BbjqVPrt9dTX4enLV3FRBfQJmoGsi9M4bH02llA8=
+			PSefxlKRDAxUQllkYXDUOTyZZ6mP+J1TQmDNrZ6IUqw=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hCGCSQT3yXyH+7AIjhPTVm5UeYE=
+			IDmDu584mFZKv8EaXELUGSspdnU=
 			</data>
 			<key>hash2</key>
 			<data>
-			+ZY75LVHDVdKeetpEaFQda0rLOz6Bxr560vC8SHU4Nw=
+			6Y1NmXnOwkVDksmG8PhMWZOn3m7AE/tdek2uBNMV+U0=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -560,11 +560,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jI+aDlhh5bZnDWonGDbrtxR605g=
+			3IS6G1i9w/b4aCJx9vLScSBniEc=
 			</data>
 			<key>hash2</key>
 			<data>
-			Tt6euEuz10NQLg6NKxMhRzEObvXN6F1k4d+ahd59/P0=
+			uxllMvgbmzpP/IrEyZmrZ2zari4ZF15S3le+ATbFEEo=
 			</data>
 		</dict>
 		<key>LaunchImage-1100-Landscape-2436h@3x.png</key>
@@ -769,11 +769,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			R1iWKZ+mH13uK6lNTNCroOUJ6pg=
+			tSxgS5I5aj/gmaa8bO3Xcg2Wj0c=
 			</data>
 			<key>hash2</key>
 			<data>
-			vyl1WuypF7ii5tsV+fLiJy7K+GJ7CSaPwP1SOljanVY=
+			0BluGOokHTYm15pWK9gIQE1ol3TQgdG1yiB/T6Wg/g0=
 			</data>
 		</dict>
 		<key>config.xml</key>
@@ -901,11 +901,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FmY39sLHv/RU4jZj3ofQXAsvdQo=
+			maGsUEU9DMcIISy5vM+nCJXPzBw=
 			</data>
 			<key>hash2</key>
 			<data>
-			SwTKW3NzH5ibOgHSMKtNPdrD+wnGDFFLMyCOMcyh6ro=
+			7OvyeTp7du+Fb1J/NKZrFmBqdPkGEacYzIf/NxLdZAY=
 			</data>
 		</dict>
 		<key>www/js/hammer.min.js</key>

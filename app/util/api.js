@@ -137,3 +137,17 @@ export const deleteShout = data => request({
 export const getJournalDetail = data => request({
   url: `/Journal/view/${data.journalid}/ajax/1`,
 })
+
+export const setBaseProfile = data => request({
+  url: '/Art/my/profile/submit/1/ajax/1',
+  method: 'POST',
+  data,
+  isLoadingDisplay: false,
+})
+
+export const setDetailedProfile = data => request({
+  url: '/Art/my/detailed_profile/submit/1/ajax/1',
+  method: 'POST',
+  data,
+  isLoadingDisplay: false,
+})

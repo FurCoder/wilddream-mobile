@@ -13,6 +13,7 @@ import JournalDetailPage from '@page/JournalDetailPage'
 import MyPage from '@page/MyPage'
 import EditProfilePage from '@page/EditProfilePage'
 import { checkLogin, getLocalLoginInfo} from '@util/api'
+import 'antd/dist/antd.css'
 
 import 'antd-mobile/dist/antd-mobile.css'
 import '@style/index.styl'

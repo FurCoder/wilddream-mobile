@@ -76,6 +76,7 @@ const config = {
       '@comp': path.resolve(__dirname, 'app', 'component'),
       '@util': path.resolve(__dirname, 'app', 'util'),
       '@style': path.resolve(__dirname, 'app', 'style'),
+      '@const': path.resolve(__dirname, 'app', 'constant'),
     },
     modules: ['node_modules'],
   }

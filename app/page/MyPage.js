@@ -7,21 +7,21 @@ import { getUserAvatar } from '@util/imgUri'
 import { Link } from 'react-router-dom'
 
 const UserLineBlock = (props) => {
-    const {
-        to = '/',
-        icon,
-        iconComp,
-        iconTheme = 'filled',
-        label = ''
-    } = props 
-    return <Link className="user-line" to={to} >
-        {
-            icon ? 
-                <Icon type={icon} theme={iconTheme} /> :
-                iconComp
-        }
-        {label}
-    </Link>
+  const {
+    to = '/',
+    icon,
+    iconComp,
+    iconTheme = 'filled',
+    label = ''
+  } = props
+  return <Link className="user-line" to={to} >
+    {
+      icon ?
+        <Icon type={icon} theme={iconTheme} /> :
+        iconComp
+    }
+    {label}
+  </Link>
 }
 
 const MyPage = (props) => {
@@ -44,11 +44,11 @@ const MyPage = (props) => {
                       <UserLineBlock icon='star' label='我的收藏' />
                     </div>
                     <div className="user-group">
-                        <UserLineBlock icon='mail' label='站内消息' />
+                      <UserLineBlock icon='mail' label='站内消息' />
                     </div>
                     <div className="user-group">
-                        <UserLineBlock icon='message' label='我收到的评论' />
-                        <UserLineBlock iconComp={<i>@</i>} label='@我的' />
+                      <UserLineBlock icon='message' label='我收到的评论' />
+                      <UserLineBlock iconComp={<i>@</i>} label='@我的' />
                     </div>
                 </>
                 )
