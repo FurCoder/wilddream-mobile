@@ -157,13 +157,17 @@
 
 - URL /Art/remote/addfav/contentid/{contentid}/typeid/{typeid}
 - 无额外参数，`{contentid}` 替换为作品ID，`{typeid}`替换为类型id
-- 返回1为成功，0为失败
+- 返回json关联数组
+  - 成功：{'success': true}
+  - 失败：{'success': false, 'errorInfo': 错误信息}
 
 ### 取消收藏作品
 
 - URL /Art/remote/deletefav/contentid/{contentid}/typeid/{typeid}
 - 无额外参数，`{contentid}` 替换为作品ID，`{typeid}`替换为类型id
-- 返回1为成功，0为失败
+- 返回json关联数组
+  - 成功：{'success': true}
+  - 失败：{'success': false, 'errorInfo': 错误信息}
 
 ## 评论作品
 
