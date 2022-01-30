@@ -33,6 +33,12 @@ jobs:
     - run: npm run build --if-present
 #     - run: npm test
 
+      
+    - run: npm i -g cordova
+    - run: |
+        cd $GITHUB_WORKSPACE/wilddream-app
+        cordova platform add android
+
     - name: set up JDK 8
       uses: actions/setup-java@v2
       with:
@@ -41,10 +47,9 @@ jobs:
         cache: gradle
 #     - name: Grant execute permission for gradlew
 #       run: chmod +x gradlew
-      
-    - run: npm i -g cordova
+
     - run: |
         cd $GITHUB_WORKSPACE/wilddream-app
-        
         yarn
+        cp -r $GITHUB_WORKSPACE/public $GITHUB_WORKSPACE/wilddream-app/www
         cordova build android --verbose
