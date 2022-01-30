@@ -34,8 +34,10 @@ jobs:
 #     - run: npm test
 
       
-    - run: npm i -g cordova
-    - run: |
+    - name: install Cordova
+      run: npm i -g cordova
+    - name: add Android support
+      run: |
         cd $GITHUB_WORKSPACE/wilddream-app
         cordova platform add android
 
@@ -48,8 +50,16 @@ jobs:
 #     - name: Grant execute permission for gradlew
 #       run: chmod +x gradlew
 
-    - run: |
+    - name: Build Android apk
+      run: |
         cd $GITHUB_WORKSPACE/wilddream-app
         yarn
         cp -r $GITHUB_WORKSPACE/public $GITHUB_WORKSPACE/wilddream-app/www
         cordova build android --verbose
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.3.1
+      with:
+        # Artifact name
+        name: android apk
+        # A file, directory or wildcard pattern that describes what to upload
+        path: ${{GITHUB_WORKSPACE}}/wilddream-app/platforms/android/app/build/outputs/apk/**/*.apk
