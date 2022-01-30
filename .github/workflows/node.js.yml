@@ -62,4 +62,4 @@ jobs:
         # Artifact name
         name: android apk
         # A file, directory or wildcard pattern that describes what to upload
-        path: ${{GITHUB_WORKSPACE}}/wilddream-app/platforms/android/app/build/outputs/apk/**/*.apk
+        path: ${{GITHUB.WORKSPACE}}/wilddream-app/platforms/android/app/build/outputs/apk/**/*.apk
