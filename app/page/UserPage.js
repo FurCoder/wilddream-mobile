@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo, useContext } from 'react'
-import { __RouterContext }  from 'react-router-dom'
+import { __RouterContext } from 'react-router'
 import { getUser, getUserArtwork, deleteShout, getLocalLoginInfo, getUserJournal } from '@util/api'
 import { getUserAvatar } from '@util/imgUri'
 import { useSimpleFetch } from '@util/effect'

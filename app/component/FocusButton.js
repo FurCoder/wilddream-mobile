@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { __RouterContext }  from 'react-router-dom'
+import { __RouterContext } from 'react-router'
 import { addWatch, deleteWatch, checkLogin } from '@util/api'
 import Icon from 'antd/lib/icon'
 import 'antd/lib/icon/style/css'

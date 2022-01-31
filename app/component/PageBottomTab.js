@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { __RouterContext }  from 'react-router-dom'
+import { __RouterContext } from 'react-router'
 import Icon from 'antd/lib/icon'
 import checkAndGo from '@util/checkAndGo'
 import { getLocalLoginInfo } from '@util/api'
