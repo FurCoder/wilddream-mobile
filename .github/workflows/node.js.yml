@@ -53,7 +53,7 @@ jobs:
     - name: Build Android apk
       run: |
         cd $GITHUB_WORKSPACE/wilddream-app
-        yarn
+        npm i
         cp -r $GITHUB_WORKSPACE/public $GITHUB_WORKSPACE/wilddream-app/www
         cordova build android --verbose
     - name: Upload a Build Artifact
