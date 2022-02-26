@@ -18,9 +18,9 @@ const ArtDetail = (props) => {
   return <div className='art-detail-page'>
     <TitleBar />
     {isViewerDisplay && <WxImageViewer onClose={() => setDisplay(false)} urls={[picSrc]} index={0}/>}
-    <img className='art-preview' onClick={() => setDisplay(true)} src={picSrc} />
-    {
-      isLoading || <>
+    {!isLoading && data.success === true && <>
+                <img className='art-preview' onClick={() => setDisplay(true)} src={picSrc} />
+
                 <div className="art-info-title">{data.artwork.title}</div>
                 <div className="desc-info">
                   {data.artwork.description}
@@ -57,6 +57,10 @@ const ArtDetail = (props) => {
                 />
             </>
     }
+    {!isLoading && data.success == false && <>
+      <div className='art-info-title'>请先登录</div>
+      <div className="desc-info">{data.errorinfo}</div>
+    </>}
   </div>
 }
 
