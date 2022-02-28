@@ -35,7 +35,7 @@ jobs:
 
       
     - name: install Cordova
-      run: npm i -g cordova
+      run: npm i -g cordova@9.0.0
     - name: add Android support
       run: |
         cd $GITHUB_WORKSPACE/wilddream-app
