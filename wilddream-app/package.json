@@ -14,13 +14,10 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "dependencies": {
-    "cordova-android": "^8.0.0",
-    "cordova-ios": "^5.0.1",
-    "cordova-osx": "^5.0.0",
-    "cordova-plugin-keyboard": "^1.2.0"
-  },
-  "devDependencies": {
-    "cordova-plugin-whitelist": "^1.3.3"
+    "cordova-android": "^8.1.0",
+    "cordova-ios": "^5.1.1",
+    "cordova-plugin-keyboard": "^1.2.0",
+    "cordova-plugin-whitelist": "^1.3.5"
   },
   "cordova": {
     "plugins": {
@@ -28,9 +25,8 @@
       "cordova-plugin-keyboard": {}
     },
     "platforms": [
-      "ios",
-      "osx",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
