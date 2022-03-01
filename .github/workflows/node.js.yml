@@ -62,6 +62,6 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         # Artifact name
-        name: android apk
+        name: android apk - Node ${{ matrix.node-version }}
         # A file, directory or wildcard pattern that describes what to upload
         path: ${{GITHUB.WORKSPACE}}/wilddream-app/platforms/android/app/build/outputs/apk/**/*.apk
