@@ -26,13 +26,13 @@
 
 ## 编译 APK
 - 安装 [Android SDK](https://developer.android.google.cn/studio?hl=zh-cn#downloads) 和 Java JDK 8
-- 安装 cordova
+- 安装 cordova 9.0.0
   ```
-  npm i -g cordova
+  npm i -g cordova@9.0.0
   ```
 - 将根目录 `public` 文件夹下的内容复制到 `wilddream-app/www`
   ```
-  copy public wilddream-ap/www
+  copy public wilddream-app/www
   ```
 - 进入 `wilddream-app` 文件夹，添加 cordova 的 Android 支持
   ```
