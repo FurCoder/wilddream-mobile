@@ -1,7 +1,11 @@
-# wilddream-mobile
+# wilddream-mobile 🐺🐲
 ~~中央研究决定，技术栈另请高明~~
 - React
 - Cordova
+
+### [API 简述](doc/api.md)
+
+### [规划的页面🕊️](doc/page.md)
 
 ## 编译内容页
 - 安装 [Node.js](https://nodejs.org)

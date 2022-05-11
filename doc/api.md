@@ -4,9 +4,8 @@
 
 ## 登录
 
-- URL /Art/login/submit/ajax/1
-- Method  POST
-- params
+- POST `/Art/login/submit/ajax/1`
+- Post body
   - `username` 用户名
   - `password` 密码
 - 返回json关联数组
@@ -27,14 +26,14 @@
 
 ## 检查是否登录
 
-- URL /Art/remote/isLogin
+- GET `/Art/remote/isLogin`
 - 返回json关联数组
   - 已登录：{'login': true, 'user': 登录用户信息}
   - 未登录：{'login': false}
 
 ## 登出
 
-- URL /Art/login/logout/ajax/1
+- GET `/Art/login/logout/ajax/1`
 - 返回json关联数组
   - 成功：{'success': true}
   - 失败：{'success': false, 'errorinfo': 错误信息}
@@ -43,9 +42,8 @@
 
 ### 基本资料设置
 
-- URL /Art/my/profile/submit/1/ajax/1
-- Method POST
-- params
+- POST `/Art/my/profile/submit/1/ajax/1`
+- Post body
     - 参考 https://www.wilddream.net/art/my/profile 的网页表单
 - 返回json关联数组
   - 成功：{'success': true}
@@ -53,9 +51,8 @@
 
 ### 详细资料及兽相关资料设置
 
-- URL /Art/my/detailed_profile/submit/1/ajax/1
-- Method POST
-- params
+- POST `/Art/my/detailed_profile/submit/1/ajax/1`
+- Post body
     - 参考 https://www.wilddream.net/art/my/detailed_profile 的网页表单
 - 返回json关联数组
   - 成功：{'success': true}
@@ -63,9 +60,8 @@
 
 ### 头像设置
 
-- URL /Art/my/avatar/submit/1/ajax/1
-- Method POST
-- params
+- POST `/Art/my/avatar/submit/1/ajax/1`
+- Post body
     - `image` 头像图片
 - 返回json关联数组
   - 成功：{'success': true}
@@ -75,8 +71,8 @@
 
 ## 首页作品列表
 
-- URL /Art/index/index/ajax/1
-- Method GET (以“?参数名1=值1&参数名2=值2”的方式附加在api地址后)
+- GET `/Art/index/index/ajax/1?params`
+  - 以“?参数名1=值1&参数名2=值2”的方式附加在api地址后
 - params
   - `page` 页码，默认为1
   - `speciesid` 按物种类别id筛选，默认为0（不筛选）
@@ -92,19 +88,18 @@
     - `favcount` 收藏数
     - `fav` 当前登录用户是否收藏此作品。如果当前登录用户没有收藏是`null`，收藏了的话是收藏时间的UNIX时间戳。用户没登录的话始这个值终为`null`
   - `artworkcount` 本站的作品总数
-  - `page` 当前是第几页
-  - `keyword` 见上
-  - `speciesid` 见上
-  - `categoryid` 见上
-  - `sort` 见上
+  - `page` 当前是第几页（同请求params）
+  - `keyword` 见上（同请求params）
+  - `speciesid` 见上（同请求params）
+  - `categoryid` 见上（同请求params）
+  - `sort` 见上（同请求params）
   - `announcements` 首页公告列表
   - `tag_stat` 标签统计 
-- 示例：https://www.wilddream.net/Art/index/activity/ajax/1 
+- 示例：https://www.wilddream.net/Art/index/index/ajax/1 
 
 ## 首页最新动态（关注者的作品信息流）
 
-- URL /Art/index/activity/ajax/1/page/{page}
-- params
+- GET `/Art/index/activity/ajax/1/page/{page}`
   - `page` 页码，默认为1
 - 必须登录才会返回，否则返回`{'success': false, 'errorInfo': 错误信息}`
 - 返回json关联数组：
@@ -123,8 +118,8 @@
 
 ## 绘画作品（Artwork，typeid=1）
 
-- URL /Art/view/{artworkid}/ajax/1
-- 无额外参数，`{artworkid}` 替换为作品ID
+- GET `/Art/view/{artworkid}/ajax/1`
+  - `{artworkid}` 为作品ID
 - 返回json关联数组
   - `success` 请求是否成功
   - `artwork` 作品的各种信息
@@ -137,8 +132,8 @@
 
 ## 文章（Journal，typeid=2）
 
-- URL /Journal/view/{journalid}/ajax/1
-- 无额外参数，`{journalid}` 替换为文章ID
+- GET `/Journal/view/{journalid}/ajax/1`
+  - `{journalid}` 为文章ID
 - 返回json关联数组
   - `success` 请求是否成功
   - `journal` 文章的各种信息
@@ -155,16 +150,18 @@
 
 ### 收藏作品
 
-- URL /Art/remote/addfav/contentid/{contentid}/typeid/{typeid}
-- 无额外参数，`{contentid}` 替换为作品ID，`{typeid}`替换为类型id
+- GET `/Art/remote/addfav/contentid/{contentid}/typeid/{typeid}`
+  - `{contentid}` 为作品ID
+  - `{typeid}` 为类型id
 - 返回json关联数组
   - 成功：{'success': true}
   - 失败：{'success': false, 'errorInfo': 错误信息}
 
 ### 取消收藏作品
 
-- URL /Art/remote/deletefav/contentid/{contentid}/typeid/{typeid}
-- 无额外参数，`{contentid}` 替换为作品ID，`{typeid}`替换为类型id
+- GET `/Art/remote/deletefav/contentid/{contentid}/typeid/{typeid}`
+  - `{contentid}` 为作品ID
+  - `{typeid}`为类型id
 - 返回json关联数组
   - 成功：{'success': true}
   - 失败：{'success': false, 'errorInfo': 错误信息}
@@ -175,9 +172,10 @@
 
 ### 添加评论
 
-- URL /Art/remote/addcomment/contentid/{contentid}/typeid/{typeid}
-- `{contentid}` 替换为作品ID，`{typeid}`替换为类型id
-- Method POST
+- POST `/Art/remote/addcomment/contentid/{contentid}/typeid/{typeid}`
+  - `{contentid}` 为作品ID
+  - `{typeid}` 为类型id
+- Post body
   - `content` 评论内容
 - 返回json关联数组
   - 成功：{'success': true}
@@ -185,8 +183,8 @@
 
 ### 删除评论
 
-- URL /Art/remote/deletecomment/commentid/{commentid}
-- `{commentid}` 替换为评论ID
+- GET `/Art/remote/deletecomment/commentid/{commentid}`
+  - `{commentid}` 为评论ID
 - 用户可以删除：1. 自己发表的评论 2. 自己作品底下的评论。其他的评论不可删除。
 - 返回json关联数组
   - 成功：{'success': true}
@@ -196,8 +194,8 @@
 
 ## 用户基本信息
 
-- URL /Art/userpage/profile/userpagename/{userpagename}/ajax/1
-- `{userpagename}` 替换为用户的用户页域名后缀
+- GET `/Art/userpage/profile/userpagename/{userpagename}/ajax/1`
+  - `{userpagename}` 为用户的用户页域名后缀
 - 返回json关联数组
   - `user` 用户信息（id、用户名、用户页域名后缀、简介）
   - `profile` 用户详细资料（所在地、性别、生日等，可能为空）
@@ -212,9 +210,9 @@
 
 ## 用户作品列表
 
-- URL /Art/userpage/gallery/userpagename/{userpagename}/ajax/1
-- `{userpagename}` 替换为用户的用户页域名后缀
-- 可后接`/folderid/{folderid}`返回某一作品文件夹下的作品列表
+- GET `/Art/userpage/gallery/userpagename/{userpagename}/ajax/1`
+  - `{userpagename}` 为用户的用户页域名后缀
+  - 可后接`/folderid/{folderid}`返回某一作品文件夹下的作品列表
 - 如成功，返回json关联数组
   - `success` = 1
   - `artworks` 作品列表
@@ -222,16 +220,16 @@
 
 ## 用户文章列表
 
-- URL /Art/userpage/journal/userpagename/{userpagename}/ajax/1
-- `{userpagename}` 替换为用户的用户页域名后缀
+- GET `/Art/userpage/journal/userpagename/{userpagename}/ajax/1`
+  - `{userpagename}` 为用户的用户页域名后缀
 - 如成功，返回json关联数组
   - `success` = 1
   - `journals` 文章列表
 
 ## 用户收藏列表
 
-- URL /Art/Userpage/fav/userpagename/{userpagename}/ajax/1
-- `{userpagename}` 替换为用户的用户页域名后缀
+- GET `/Art/Userpage/fav/userpagename/{userpagename}/ajax/1`
+  - `{userpagename}` 为用户的用户页域名后缀
 - 返回json关联数组
   - `artworks` 收藏作品列表
   - `journals` 收藏文章列表
@@ -240,21 +238,21 @@
 
 ### 关注用户
 
-- URL /Art/Userpage/addwatch/userid/{userid}
-- 无额外参数，`{userid}` 替换为用户ID
+- GET `/Art/Userpage/addwatch/userid/{userid}`
+  - `{userid}` 为用户ID
 - 返回1为成功，0为失败
 
 ### 取消关注用户
 
-- URL /Art/Userpage/deletewatch/userid/{artworkid}
-- 无额外参数，`{userid}` 替换为用户ID
+- GET `/Art/Userpage/deletewatch/userid/{artworkid}`
+  - `{userid}` 为用户ID
 - 返回1为成功，0为失败
 
 ## 给用户留言
 
-- URL /Art/Userpage/addshout/userid/{userid}/ajax/1
-- `{userid}` 替换为用户ID
-- Method POST
+- POST `/Art/Userpage/addshout/userid/{userid}/ajax/1`
+  - `{userid}` 为用户ID
+- Post body
   - `content` 评论内容
 - 返回json关联数组
   - 成功：{'success': true}
@@ -262,8 +260,8 @@
 
 ## 删除用户留言
 
-- URL /Art/Userpage/deleteshout/shoutid/{shoutid}/ajax/1
-- `{shoutid}` 替换为留言ID
+- GET `/Art/Userpage/deleteshout/shoutid/{shoutid}/ajax/1`
+  - `{shoutid}` 为留言ID
 - 用户可以删除：1. 自己发表的留言 2. 自己用户页下的留言。其他的留言不可删除。
 - 返回json关联数组
   - 成功：{'success': true}
@@ -273,20 +271,21 @@
 
 ## 委托列表
 
-- URL /Community/Commissionpage/index/ajax/1/page/{page}
-- `{page}` 替换为页码，可后加 `/keyword/{keyword}` 支持搜索关键字
+- GET `/Community/Commissionpage/index/ajax/1/page/{page}`
+  - `{page}` 为页码
+  - 可后加 `/keyword/{keyword}` 支持搜索关键字
 - 返回委托列表的json数组
 
 # 图片
 
 ## 作品图片
 
-- URL /Public/uploads/artwork/{userid}/{preview或thumb}/{artworkid}.jpg
+- GET `/Public/uploads/artwork/{userid}/{preview或thumb}/{artworkid}.jpg`
   - `thumb` 缩略图（width <= 200, height <= 1000）
   - `preview` 大图（width <= 1024, height <= 1024，用于作品页浏览）
 
 ## 用户头像
 
-- URL /Public/uploads/avatar/{userid}/avatar_{small或large}.jpg
+- GET `/Public/uploads/avatar/{userid}/avatar_{small或large}.jpg`
   - `small` 小缩略图（width <= 50, height <= 50）
   - `large` 大缩略图（width <= 200, height <= 200）
