@@ -70,7 +70,7 @@
     "antd": "^3.19.2",
     "antd-mobile": "^2.2.13",
     "fastclick": "^1.0.6",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "node-notifier": "^8.0.1",
     "postcss": "^8.2.13",
     "qs": "^6.6.0",
